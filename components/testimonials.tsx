@@ -31,7 +31,7 @@ export default function Testimonials() {
             Business - Data - Tech</h2>
             <p className="text-xl text-gray-600" data-aos="zoom-y-out">Consumertech portfolio MAU 20m+<br>
             </br> Transformative solutions for startup, scaleup, enterprise<br></br>
-            Advisor to founders, investors, vendor pocurement</p>
+            Advisor to founders, investors, vendor procurement</p>
           </div>
 
           {/* Items */}
