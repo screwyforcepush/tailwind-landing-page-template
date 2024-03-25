@@ -47,10 +47,25 @@ export default function Features() {
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
-                <a
+              <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
                   href="#0"
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
+                >
+                  <div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">AdvisorSquad</div>
+                    <div className="text-gray-600">Bespoke teams of AI Experts, working collaboratively to execute the user's goal.</div>
+                  </div>
+                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                    <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z" fillRule="nonzero" />
+                    </svg>
+                  </div>
+                </a>
+                <a
+                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
+                  href="#0"
+                  onClick={(e) => { e.preventDefault(); setTab(2); }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">GPTs</div>
@@ -63,27 +78,12 @@ export default function Features() {
                   </div>
                 </a>
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
-                  href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(2); }}
-                >
-                  <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Round Table (Closed Beta)</div>
-                    <div className="text-gray-600">Human-AI collaboration kicked into high gear with a team of Experts engaging in conversation with each other.</div>
-                  </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <svg className="w-3 h-3 fill-current" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z" fillRule="nonzero" />
-                    </svg>
-                  </div>
-                </a>
-                <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 3 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
                   href="#0"
                   onClick={(e) => { e.preventDefault(); setTab(3); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Around the Clock (Development)</div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">Around the Clock (Closed Beta)</div>
                     <div className="text-gray-600">AI Agents work autonomously while you sleep. <br></br>Daily progress updates. <br></br>On-demand human-AI team standup, scope adjustment, retro feedback loop.</div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
@@ -99,12 +99,13 @@ export default function Features() {
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1">
               <div className="transition-all">
                 <div className="relative flex flex-col text-center lg:text-right" data-aos="zoom-y-out" ref={tabs}>
+                  
                   {/* Item 1 */}
                   <Transition
                     show={tab === 1}
                     appear={true}
                     className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
+                    enter="transition ease-in-out duration-700 transform order-f irst"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
                     leave="transition ease-in-out duration-300 transform absolute"
@@ -114,8 +115,14 @@ export default function Features() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src="/images/gptsss.png" width={500} height="462" alt="Features bg" />
+                      <Image className="md:max-w-none mx-auto rounded" src="/images/roundtable.png" width={500} height="462" alt="Features bg" />
                     </div>
+                    <div>
+                    <a href="https://advisorsquad.ai/" target="_blank" rel="noopener noreferrer" className="btn text-darkgray bg-gray-400 hover:bg-gray-300 w-full sm:w-auto sm:ml-4">
+                      <Image src="/images/monocle.png" alt="Logo" width={32} height={32} className="w-8 h-8 fill-current mt-1 mr-2"/>
+                      Try AdvisorSquad
+                    </a>
+                  </div>
                   </Transition>
                   {/* Item 2 */}
                   <Transition
@@ -132,7 +139,7 @@ export default function Features() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src="/images/roundtable.png" width={500} height="462" alt="Features bg" />
+                      <Image className="md:max-w-none mx-auto rounded" src="/images/gptsss.png" width={500} height="462" alt="Features bg" />
                     </div>
                   </Transition>
                   {/* Item 3 */}

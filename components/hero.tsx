@@ -1,5 +1,7 @@
 import VideoThumb from '@/public/images/hero-image.png'
 import ModalVideo from '@/components/modal-video'
+import Image from 'next/image'
+
 
 export default function Hero() {
   return (
@@ -38,6 +40,12 @@ export default function Hero() {
                     <svg className="w-8 h-8 fill-current mt-1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
                 </svg>Connect</a>
+                </div>
+                <div>
+                  <a href="https://advisorsquad.ai/" target="_blank" rel="noopener noreferrer" className="btn text-darkgray bg-gray-400 hover:bg-gray-300 w-full sm:w-auto sm:ml-4">
+                    <Image src="/images/monocle.png" alt="Logo" width={32} height={32} className="w-8 h-8 fill-current mt-1 mr-2"/>
+                    AdvisorSquad
+                  </a>
                 </div>
                 <div>
                   <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://chat.openai.com/g/g-ETaZgZ7ul-gpt-librarian-ella-quence" target="_blank">
