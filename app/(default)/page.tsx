@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Savage GenAI',
-  description: 'Page description',
+  title: 'Alex Savage - AI Product Engineer',
+  description: 'Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy',
 }
 
 import Hero from '@/components/hero'
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Features />
+      {/* <Features /> */}
       <FeaturesBlocks />
       <Testimonials />
       <Newsletter />
