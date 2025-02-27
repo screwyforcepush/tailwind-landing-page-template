@@ -77,9 +77,6 @@ export default function Testimonials() {
                 Experienced Leader, melding data, AI, and product strategy to drive business outcomes worldwide. Known for integrating data insights, business acumen, and technical skill, I've pioneered impactful innovations and data-driven decision-making, leading diverse teams to align with key business objectives.
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">Alex Savage</cite>
-                <div className="text-gray-600">
-                  <a className="text-blue-600 hover:underline" href="https://www.linkedin.com/in/alexsavagedata/" target="_blank">Connect on LinkedIn</a>
-                </div>
               </div>
 
             </div>
