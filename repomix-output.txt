@@ -1,0 +1,2356 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: .next, .vscode, node_modules
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+app/
+  (auth)/
+    reset-password/
+      page.tsx
+    signin/
+      page.tsx
+    signup/
+      page.tsx
+    layout.tsx
+  (default)/
+    layout.tsx
+    page.tsx
+  api/
+    hello/
+      route.ts
+  css/
+    additional-styles/
+      range-slider.css
+      theme.css
+      toggle-switch.css
+      utility-patterns.css
+    style.css
+  layout.tsx
+components/
+  ui/
+    footer.tsx
+    header.tsx
+    logo.tsx
+    mobile-menu.tsx
+  utils/
+    accordion.tsx
+    dropdown.tsx
+  banner.tsx
+  features-blocks.tsx
+  features.tsx
+  hero.tsx
+  newsletter.tsx
+  testimonials.tsx
+public/
+  images/
+    logos/
+      ABS-CBN.svg
+.gitignore
+CHANGELOG.md
+next.config.js
+package.json
+postcss.config.js
+README.md
+tailwind.config.js
+tsconfig.json
+
+================================================================
+Files
+================================================================
+
+================
+File: app/(auth)/reset-password/page.tsx
+================
+export const metadata = {
+  title: 'Reset Password - Simple',
+  description: 'Page description',
+}
+
+export default function ResetPassword() {
+  return (
+    <section className="bg-gradient-to-b from-gray-100 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+          {/* Page header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h1 className="h1 mb-4">Let's get you back up on your feet</h1>
+            <p className="text-xl text-gray-600">Enter the email address you used when you signed up for your account, and we'll email you a link to reset your password.</p>
+          </div>
+
+          {/* Form */}
+          <div className="max-w-sm mx-auto">
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
+                  <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mt-6">
+                <div className="w-full px-3">
+                  <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Send reset link</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: app/(auth)/signin/page.tsx
+================
+export const metadata = {
+  title: 'Sign In - Simple',
+  description: 'Page description',
+}
+
+import Link from 'next/link'
+
+export default function SignIn() {
+  return (
+    <section className="bg-gradient-to-b from-gray-100 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+          {/* Page header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h1 className="h1">Welcome back. We exist to make entrepreneurism easier.</h1>
+          </div>
+
+          {/* Form */}
+          <div className="max-w-sm mx-auto">
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email</label>
+                  <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <div className="flex justify-between">
+                    <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="password">Password</label>
+                    <Link href="/reset-password" className="text-sm font-medium text-blue-600 hover:underline">Having trouble signing in?</Link>
+                  </div>
+                  <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <div className="flex justify-between">
+                    <label className="flex items-center">
+                      <input type="checkbox" className="form-checkbox" />
+                      <span className="text-gray-600 ml-2">Keep me signed in</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mt-6">
+                <div className="w-full px-3">
+                  <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Sign in</button>
+                </div>
+              </div>
+            </form>
+            <div className="flex items-center my-6">
+              <div className="border-t border-gray-300 grow mr-3" aria-hidden="true"></div>
+              <div className="text-gray-600 italic">Or</div>
+              <div className="border-t border-gray-300 grow ml-3" aria-hidden="true"></div>
+            </div>
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-3">
+                <div className="w-full px-3">
+                  <button className="btn px-0 text-white bg-gray-900 hover:bg-gray-800 w-full relative flex items-center">
+                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.95 0C3.578 0 0 3.578 0 7.95c0 3.479 2.286 6.46 5.466 7.553.397.1.497-.199.497-.397v-1.392c-2.187.497-2.683-.993-2.683-.993-.398-.895-.895-1.193-.895-1.193-.696-.497.1-.497.1-.497.795.1 1.192.795 1.192.795.696 1.292 1.888.895 2.286.696.1-.497.298-.895.497-1.093-1.79-.2-3.578-.895-3.578-3.975 0-.895.298-1.59.795-2.087-.1-.2-.397-.994.1-2.087 0 0 .695-.2 2.186.795a6.408 6.408 0 011.987-.299c.696 0 1.392.1 1.988.299 1.49-.994 2.186-.795 2.186-.795.398 1.093.199 1.888.1 2.087.496.596.795 1.291.795 2.087 0 3.08-1.889 3.677-3.677 3.875.298.398.596.895.596 1.59v2.187c0 .198.1.497.596.397C13.714 14.41 16 11.43 16 7.95 15.9 3.578 12.323 0 7.95 0z" />
+                    </svg>
+                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with GitHub</span>
+                  </button>
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3">
+                <div className="w-full px-3">
+                  <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
+                    </svg>
+                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with Google</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div className="text-gray-600 text-center mt-6">
+              Don't you have an account? <Link href="/signup" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: app/(auth)/signup/page.tsx
+================
+export const metadata = {
+  title: 'Sign Up - Simple',
+  description: 'Page description',
+}
+
+import Link from 'next/link'
+
+export default function SignUp() {
+  return (
+    <section className="bg-gradient-to-b from-gray-100 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+          {/* Page header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h1 className="h1">Welcome. We exist to make entrepreneurism easier.</h1>
+          </div>
+
+          {/* Form */}
+          <div className="max-w-sm mx-auto">
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="name">Name <span className="text-red-600">*</span></label>
+                  <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
+                  <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="password">Password <span className="text-red-600">*</span></label>
+                  <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mt-6">
+                <div className="w-full px-3">
+                  <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Sign up</button>
+                </div>
+              </div>
+              <div className="text-sm text-gray-500 text-center mt-3">
+                By creating an account, you agree to the <a className="underline" href="#0">terms & conditions</a>, and our <a className="underline" href="#0">privacy policy</a>.
+              </div>
+            </form>
+            <div className="flex items-center my-6">
+              <div className="border-t border-gray-300 grow mr-3" aria-hidden="true"></div>
+              <div className="text-gray-600 italic">Or</div>
+              <div className="border-t border-gray-300 grow ml-3" aria-hidden="true"></div>
+            </div>
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-3">
+                <div className="w-full px-3">
+                  <button className="btn px-0 text-white bg-gray-900 hover:bg-gray-800 w-full relative flex items-center">
+                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.95 0C3.578 0 0 3.578 0 7.95c0 3.479 2.286 6.46 5.466 7.553.397.1.497-.199.497-.397v-1.392c-2.187.497-2.683-.993-2.683-.993-.398-.895-.895-1.193-.895-1.193-.696-.497.1-.497.1-.497.795.1 1.192.795 1.192.795.696 1.292 1.888.895 2.286.696.1-.497.298-.895.497-1.093-1.79-.2-3.578-.895-3.578-3.975 0-.895.298-1.59.795-2.087-.1-.2-.397-.994.1-2.087 0 0 .695-.2 2.186.795a6.408 6.408 0 011.987-.299c.696 0 1.392.1 1.988.299 1.49-.994 2.186-.795 2.186-.795.398 1.093.199 1.888.1 2.087.496.596.795 1.291.795 2.087 0 3.08-1.889 3.677-3.677 3.875.298.398.596.895.596 1.59v2.187c0 .198.1.497.596.397C13.714 14.41 16 11.43 16 7.95 15.9 3.578 12.323 0 7.95 0z" />
+                    </svg>
+                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with GitHub</span>
+                  </button>
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3">
+                <div className="w-full px-3">
+                  <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
+                    </svg>
+                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with Google</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div className="text-gray-600 text-center mt-6">
+              Already using Simple? <Link href="/signin" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign in</Link>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: app/(auth)/layout.tsx
+================
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {  
+  return (
+    <main className="grow">
+
+      {children}
+
+    </main>
+  )
+}
+
+================
+File: app/(default)/layout.tsx
+================
+'use client'
+
+import { useEffect } from 'react'
+
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+import Footer from '@/components/ui/footer'
+
+export default function DefaultLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {  
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: 'phone',
+      duration: 700,
+      easing: 'ease-out-cubic',
+    })
+  })
+
+  return (
+    <>
+      <main className="grow">
+
+        {children}
+
+      </main>
+
+      <Footer />
+    </>
+  )
+}
+
+================
+File: app/api/hello/route.ts
+================
+export async function GET(request: Request) {
+  return new Response('Hello, Next.js!')
+}
+
+================
+File: app/css/additional-styles/range-slider.css
+================
+/* Range slider */
+:root {
+    --range-thumb-size: 36px;
+}
+
+input[type=range] {
+    appearance: none;
+    background: #ccc;
+    border-radius: 3px;
+    height: 6px;
+    margin-top: (--range-thumb-size - 6px) * 0.5;
+    margin-bottom: (--range-thumb-size - 6px) * 0.5;
+    --thumb-size: #{--range-thumb-size};
+}
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #000;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: --range-thumb-size;
+    width: --range-thumb-size;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #000;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    height: --range-thumb-size;
+    width: --range-thumb-size;
+}
+
+input[type=range]::-ms-thumb {
+    background-color: #000;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: --range-thumb-size;
+    width: --range-thumb-size;
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+================
+File: app/css/additional-styles/theme.css
+================
+html {
+    scroll-behavior: smooth;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-multiselect:focus,
+.form-select:focus,
+.form-checkbox:focus,
+.form-radio:focus {
+    @apply ring-0;
+}
+
+/* Hamburger button */
+.hamburger svg>*:nth-child(1),
+.hamburger svg>*:nth-child(2),
+.hamburger svg>*:nth-child(3) {
+    transform-origin: center;
+    transform: rotate(0deg);
+}
+
+.hamburger svg>*:nth-child(1) {
+    transition: y 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.1s ease-in;
+}
+
+.hamburger svg>*:nth-child(2) {
+    transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger svg>*:nth-child(3) {
+    transition: y 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), width 0.1s 0.25s ease-in;
+}
+
+.hamburger.active svg>*:nth-child(1) {
+    opacity: 0;
+    y: 11;
+    transform: rotate(225deg);
+    transition: y 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.1s 0.12s ease-out;
+}
+
+.hamburger.active svg>*:nth-child(2) {
+    transform: rotate(225deg);
+    transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger.active svg>*:nth-child(3) {
+    y: 11;
+    transform: rotate(135deg);
+    transition: y 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s ease-out;
+}
+
+/* Pulsing animation */
+@keyframes pulseLoop {
+    0% { opacity: .15; transform: scale(1) translateZ(0); }
+    30% { opacity: .15; }
+    60% { opacity: 0; }
+    80% { opacity: 0; transform: scale(1.8) translateZ(0); }
+}
+@keyframes pulseMiniLoop {
+    0% { opacity: 0; transform: scale(1) translateZ(0); }
+    30% { opacity: .3; }
+    50% { opacity: .3; }
+    80% { opacity: 0; transform: scale(3) translateZ(0); }
+}
+.pulse {
+    transform: scale(1);
+    opacity: 0;
+    transform-origin: center;
+    animation: pulseLoop 10000ms linear infinite;                                   
+}
+.pulse-mini {
+    animation: pulseMiniLoop 6000ms linear infinite;                                   
+}
+.pulse-1 {
+    animation-delay: -3000ms;
+}
+.pulse-2 {
+    animation-delay: -6000ms;
+}
+
+/* Animations delay */
+.animation-delay-500 {
+    animation-delay: 500ms !important;
+}
+
+.animation-delay-1000 {
+    animation-delay: 1000ms !important;
+}
+
+.translate-z-0 {
+    transform: translateZ(0);
+}
+
+/* Custom AOS animations */
+[data-aos="zoom-y-out"] {
+  transform: scaleX(1.03);
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+@media screen {
+    html:not(.no-js) body [data-aos=fade-up] {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down] {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-right] {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-left] {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-up-right] {
+        -webkit-transform: translate3d(-10px, 10px, 0);
+        transform: translate3d(-10px, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-up-left] {
+        -webkit-transform: translate3d(10px, 10px, 0);
+        transform: translate3d(10px, 10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down-right] {
+        -webkit-transform: translate3d(-10px, -10px, 0);
+        transform: translate3d(-10px, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=fade-down-left] {
+        -webkit-transform: translate3d(10px, -10px, 0);
+        transform: translate3d(10px, -10px, 0);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-up] {
+        -webkit-transform: translate3d(0, 10px, 0) scale(.6);
+        transform: translate3d(0, 10px, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-down] {
+        -webkit-transform: translate3d(0, -10px, 0) scale(.6);
+        transform: translate3d(0, -10px, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-right] {
+        -webkit-transform: translate3d(-10px, 0, 0) scale(.6);
+        transform: translate3d(-10px, 0, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-in-left] {
+        -webkit-transform: translate3d(10px, 0, 0) scale(.6);
+        transform: translate3d(10px, 0, 0) scale(.6);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-up] {
+        -webkit-transform: translate3d(0, 10px, 0) scale(1.2);
+        transform: translate3d(0, 10px, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-down] {
+        -webkit-transform: translate3d(0, -10px, 0) scale(1.2);
+        transform: translate3d(0, -10px, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-right] {
+        -webkit-transform: translate3d(-10px, 0, 0) scale(1.2);
+        transform: translate3d(-10px, 0, 0) scale(1.2);
+    }
+
+    html:not(.no-js) body [data-aos=zoom-out-left] {
+        -webkit-transform: translate3d(10px, 0, 0) scale(1.2);
+        transform: translate3d(10px, 0, 0) scale(1.2);
+    }
+}
+
+================
+File: app/css/additional-styles/toggle-switch.css
+================
+/* Switch element */
+.form-switch {
+    @apply relative select-none;
+    width: 68px;
+}
+
+.form-switch label {
+    @apply block overflow-hidden cursor-pointer rounded;
+    height: 38px;
+}
+
+.form-switch label>span:first-child {
+    @apply absolute block rounded shadow;
+    width: 30px;
+    height: 30px;
+    top: 4px;
+    left: 4px;
+    right: 50%;
+    transition: all .15s ease-out;
+}
+
+.form-switch input[type="checkbox"]:checked+label {
+    @apply bg-blue-600;
+}
+
+.form-switch input[type="checkbox"]:checked+label>span:first-child {
+    left: 34px;
+}
+
+================
+File: app/css/additional-styles/utility-patterns.css
+================
+/* Typography */
+.h1 {
+    @apply text-4xl font-extrabold leading-tight tracking-tighter;
+}
+
+.h2 {
+    @apply text-3xl font-extrabold leading-tight tracking-tighter;
+}
+
+.h3 {
+    @apply text-3xl font-bold leading-tight;
+}
+
+.h4 {
+    @apply text-2xl font-bold leading-snug tracking-tight;
+}
+
+@screen md {
+    .h1 {
+        @apply text-5xl;
+    }
+
+    .h2 {
+        @apply text-4xl;
+    }
+}
+
+/* Buttons */
+.btn,
+.btn-sm {
+    @apply font-medium inline-flex items-center justify-center border border-transparent rounded leading-snug transition duration-150 ease-in-out;
+}
+
+.btn {
+    @apply px-8 py-3 shadow-lg;
+}
+
+.btn-sm {
+    @apply px-4 py-2 shadow;
+}
+
+/* Forms */
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+    @apply bg-white border border-gray-300 focus:border-gray-500;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+    @apply rounded;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+    @apply py-3 px-4;
+}
+
+.form-input,
+.form-textarea {
+    @apply placeholder-gray-500;
+}
+
+.form-select {
+    @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+    @apply text-gray-800 rounded-sm;
+}
+
+================
+File: app/css/style.css
+================
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/range-slider.css';
+@import 'additional-styles/toggle-switch.css';
+@import 'additional-styles/theme.css';
+
+@import 'tailwindcss/utilities';
+
+/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
+@layer utilities {
+    .rtl {
+        direction: rtl;
+    }
+}
+
+================
+File: components/utils/accordion.tsx
+================
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+
+type AccordionpProps = {
+  children: React.ReactNode
+  tag?: string
+  title: string
+  active?: boolean
+}
+
+export default function Accordion({
+  children,
+  tag = 'li',
+  title,
+  active = false
+}: AccordionpProps) {
+
+  const [accordionOpen, setAccordionOpen] = useState<boolean>(false)
+  const accordion = useRef<HTMLDivElement>(null)
+  const Component = tag as keyof JSX.IntrinsicElements
+
+  useEffect(() => {
+    setAccordionOpen(active)
+  }, [accordion])
+
+  return (
+    <Component>
+      <button
+        className="flex items-center w-full text-lg font-medium text-left py-5 border-t border-gray-200"
+        onClick={(e) => { e.preventDefault(); setAccordionOpen(!accordionOpen); }}
+        aria-expanded={accordionOpen}
+      >
+        <svg className="w-4 h-4 fill-current text-blue-500 shrink-0 mr-8 -ml-12" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect y="7" width="16" height="2" rx="1" className={`transform origin-center transition duration-200 ease-out ${accordionOpen && '!rotate-180'}`} />
+          <rect y="7" width="16" height="2" rx="1" className={`transform origin-center rotate-90 transition duration-200 ease-out ${accordionOpen && '!rotate-180'}`} />
+        </svg>
+        <span>{title}</span>
+      </button>
+      <div
+        ref={accordion}
+        className="text-gray-600 overflow-hidden transition-all duration-300 ease-in-out"
+        style={accordionOpen ? { maxHeight: accordion.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0 }}
+      >
+        <p className="pb-5">{children}</p>
+      </div>
+    </Component>
+  )
+}
+
+================
+File: components/utils/dropdown.tsx
+================
+'use client'
+
+import { useState } from 'react'
+import { Transition } from '@headlessui/react'
+
+type DropdownProps = {
+  children: React.ReactNode
+  title: string
+}
+
+export default function Dropdown({
+  children,
+  title
+}: DropdownProps) {
+
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false)
+
+  return (
+    <li
+      className="relative"
+      onMouseEnter={() => setDropdownOpen(true)}
+      onMouseLeave={() => setDropdownOpen(false)}
+      onFocus={() => setDropdownOpen(true)}
+      onBlur={() => setDropdownOpen(false)}
+    >
+      <a
+        className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
+        href="#0"
+        aria-expanded={dropdownOpen}
+        onClick={(e) => e.preventDefault()}
+      >
+        {title}
+        <svg className="w-3 h-3 fill-current text-gray-500 cursor-pointer ml-1 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.28 4.305L5.989 8.598 1.695 4.305A1 1 0 00.28 5.72l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z" />
+        </svg>
+      </a>
+      <Transition
+        show={dropdownOpen}
+        as="ul"
+        className="origin-top-right absolute top-full right-0 w-40 bg-white py-2 ml-4 rounded shadow-lg"
+        enter="transition ease-out duration-200 transform"
+        enterFrom="opacity-0 -translate-y-2"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-out duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        {children}
+      </Transition>
+    </li>
+  )
+}
+
+================
+File: public/images/logos/ABS-CBN.svg
+================
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="1000"
+   height="1166.549"
+   viewBox="2070 0 1000 1166.549"
+   enable-background="new 2070 0 1015 1182"
+   xml:space="preserve"
+   id="svg2138"
+   sodipodi:docname="ABS-CBN (2014).svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"><metadata
+     id="metadata2144"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs2142" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1024"
+     inkscape:window-height="706"
+     id="namedview2140"
+     showgrid="false"
+     inkscape:zoom="0.39932318"
+     inkscape:cx="390.67215"
+     inkscape:cy="568.30702"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2138" /><g
+     id="g2727"><g
+       transform="matrix(1.0397799,0,0,1.0397799,-107.56737,-36.570964)"
+       id="Layer_1" /><rect
+       style="fill:#ffffff;stroke-width:1.0397799"
+       id="rect2111"
+       height="997.26642"
+       width="993.61261"
+       y="0.00017556302"
+       x="2076.3613" /><path
+       style="fill:#0066b2;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2113"
+       d="m 2766.4071,498.6391 c 0,-107.10357 -86.5096,-193.93662 -193.2108,-193.93662 -106.722,0 -193.2504,86.83305 -193.2504,193.93662 0,85.07168 54.5708,157.29375 130.4945,183.46813 v -92.29399 c -28.7895,-19.99496 -47.6615,-53.36982 -47.6615,-91.17414 0,-61.20248 49.4353,-110.83326 110.3987,-110.83326 60.9643,0 110.4371,49.63078 110.4371,110.83326 0,38.15681 -19.2422,71.76873 -48.4652,91.72627 v 91.99868 c 76.2907,-25.91755 131.2576,-98.35694 131.2576,-183.72495" /><path
+       style="fill:#00a551;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2115"
+       d="m 2904.4369,498.6391 c 0,-183.61681 -148.3215,-332.47794 -331.2593,-332.47794 -182.9379,0 -331.2386,148.86217 -331.2386,332.47794 0,162.07673 115.5539,297.03705 268.5014,326.45554 V 739.88468 C 2403.6248,711.96139 2324.7502,614.58704 2324.7502,498.6391 c 0,-137.71469 111.2274,-249.35377 248.4274,-249.35377 137.2249,0 248.472,111.64012 248.472,249.35377 0,116.24428 -79.2894,213.81306 -186.4824,241.44313 v 85.15174 c 153.2999,-29.10448 269.2697,-164.2218 269.2697,-326.59487" /><path
+       style="fill:#ec1c24;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2117"
+       d="m 3042.4458,498.6391 c 0,-260.13941 -210.0968,-470.999496 -469.2682,-470.999496 -259.1714,0 -469.2683,210.860086 -469.2683,470.999496 0,238.7657 177.035,436.03066 406.5321,466.78839 V 881.2989 c -183.5856,-30.10683 -323.7188,-189.90332 -323.7188,-382.6598 0,-214.22793 173.0152,-387.87533 386.456,-387.87533 213.4419,0 386.4623,173.6474 386.4623,387.87533 0,193.03098 -140.5533,353.024 -324.4904,382.77834 v 84.12755 C 2865.022,935.10335 3042.4458,737.68034 3042.4458,498.6391" /><rect
+       style="fill:#000000;stroke-width:1.0397799"
+       id="rect2119"
+       height="498.70547"
+       width="69.013313"
+       y="498.62039"
+       x="2538.6829" /><rect
+       style="fill:#000000;stroke-width:1.0397799"
+       id="rect2121"
+       height="44.82803"
+       width="44.947605"
+       y="1084.0736"
+       x="2550.7039" /><path
+       style="fill:#000000;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2123"
+       d="m 2819.7936,1143.8392 c 0,10.9218 0.4534,10.8428 20.3891,10.8428 20.938,0 40.9309,-3.1682 40.9309,-19.3638 0,-21.9623 -34.1609,-22.2378 -49.5476,-22.2378 h -11.7724 z m 0,-44.4548 h 11.7724 c 13.4599,0 41.3468,-0.9462 41.3468,-19.3066 0,-15.447 -16.3172,-19.4429 -35.5209,-19.4429 -16.6282,0 -17.5983,1.201 -17.5983,11.1974 z m -44.75,-49.0017 H 2842.7 c 38.2992,0 77.9512,1.6938 77.9512,28.0221 0,22.4738 -27.9222,24.3433 -37.3686,25.3664 v 0.1779 c 22.0776,-0.1779 42.6205,9.2488 42.6205,30.3449 0,30.8367 -48.4079,30.582 -85.1267,30.582 h -65.7328 z" /><path
+       style="fill:#000000;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2125"
+       d="m 2607.6536,1107.6101 c 0,31.2693 19.8026,58.9389 92.2575,58.9389 28.046,0 41.9593,-1.438 65.9231,-5.49 v -29.1253 c -5.882,9.6034 -22.3521,24.4203 -57.2866,24.4203 -40.5567,0 -55.4328,-26.999 -55.4328,-48.7439 0,-21.7667 14.8761,-48.7261 55.4328,-48.7261 34.9345,0 51.4046,14.8376 57.2866,24.4036 v -29.1263 c -23.9648,-4.0541 -37.8781,-5.4724 -65.9231,-5.4724 -72.4549,0 -92.2575,27.6488 -92.2575,58.9212" /><polygon
+       transform="matrix(1.0397799,0,0,1.0397799,-107.56737,-36.570964)"
+       style="fill:#000000"
+       id="polygon2127"
+       points="3055.747,1045.332 3039.663,1045.332 3039.663,1119.144 2957.37,1045.369 2924.214,1045.332 2924.214,1155.462 2940.508,1155.462 2940.543,1084.811 3017.46,1155.462 3056,1155.462 3056,1045.369 3055.729,1045.369 " /><path
+       style="fill:#000000;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2129"
+       d="m 2114.8915,1120.2434 h 51.8164 l -25.4102,-47.5065 z m 22.0007,-69.8607 h 38.9636 l 63.7427,114.4933 h -49.7722 l -16.9993,-30.8368 h -66.8153 l -16.7259,30.8368 H 2070 Z" /><path
+       style="fill:#000000;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2131"
+       d="m 2291.1362,1143.8392 c 0,10.9218 0.4523,10.8428 20.3891,10.8428 20.938,0 40.9309,-3.1682 40.9309,-19.3638 0,-21.9623 -34.162,-22.2378 -49.5476,-22.2378 h -11.7724 z m 0,-44.4548 h 11.7724 c 13.4537,0 41.3635,-0.9462 41.3635,-19.3066 0,-15.447 -16.3349,-19.4429 -35.5459,-19.4429 -16.6479,0 -17.591,1.201 -17.591,11.1974 v 27.5521 z m -44.75,-49.0017 h 67.6564 c 38.292,0 77.9315,1.6938 77.9315,28.0221 0,22.4738 -27.9056,24.3433 -37.3499,25.3664 v 0.1779 c 22.0776,-0.1779 42.6205,9.2488 42.6205,30.3449 0,30.8367 -48.4277,30.582 -85.133,30.582 h -65.7266 v -114.4933 z" /><path
+       style="fill:#000000;stroke-width:1.0397799"
+       inkscape:connector-curvature="0"
+       id="path2133"
+       d="m 2528.2674,1083.3261 c -10.3884,-16.727 -33.5693,-24.4421 -55.2965,-24.4421 -22.3543,0 -31.0146,6.0983 -31.6468,16.2143 -1.1801,21.7272 100.2067,14.3292 97.2943,57.5414 -1.7718,26.3719 -38.058,33.8895 -78.1218,33.8895 -21.7095,0 -51.1322,-3.4645 -56.4403,-4.052 v -31.8807 c 12.1426,11.7464 38.135,25.3665 59.1937,25.9363 20.9172,0.5511 31.7018,-2.5599 31.7018,-16.806 0,-23.6144 -95.5214,-12.0822 -92.5903,-58.6633 1.1781,-18.5954 24.7353,-33.8292 72.4175,-32.255 20.1718,0.6103 37.5839,2.4414 53.4863,5.5493 v 28.9683 z" /></g></svg>
+
+================
+File: tsconfig.json
+================
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+================
+File: components/ui/mobile-menu.tsx
+================
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { Transition } from '@headlessui/react'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+
+export default function MobileMenu() {
+  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
+
+  const trigger = useRef<HTMLButtonElement>(null)
+  const mobileNav = useRef<HTMLDivElement>(null)
+
+  // close the mobile menu on click outside
+  useEffect(() => {
+    const clickHandler = ({ target }: { target: EventTarget | null }): void => {
+      if (!mobileNav.current || !trigger.current) return;
+      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node)) return;
+      setMobileNavOpen(false)
+    };
+    document.addEventListener('click', clickHandler)
+    return () => document.removeEventListener('click', clickHandler)
+  })
+
+  // close the mobile menu if the esc key is pressed
+  useEffect(() => {
+    const keyHandler = ({ keyCode }: { keyCode: number }): void => {
+      if (!mobileNavOpen || keyCode !== 27) return;
+      setMobileNavOpen(false)
+    };
+    document.addEventListener('keydown', keyHandler)
+    return () => document.removeEventListener('keydown', keyHandler)
+  })
+
+  return (
+    <div className="flex md:hidden">
+      {/* Hamburger button */}
+      <button
+        ref={trigger}
+        className={`hamburger ${mobileNavOpen && 'active'}`}
+        aria-controls="mobile-nav"
+        aria-expanded={mobileNavOpen}
+        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+      >
+        <span className="sr-only">Menu</span>
+        <svg className="w-6 h-6 fill-current text-gray-900" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect y="4" width="24" height="2" />
+          <rect y="11" width="24" height="2" />
+          <rect y="18" width="24" height="2" />
+        </svg>
+      </button>
+
+      {/*Mobile navigation */}
+      <div ref={mobileNav}>
+        <Transition
+          show={mobileNavOpen}
+          as="nav"
+          id="mobile-nav"
+          className="absolute top-full h-screen pb-16 z-20 left-0 w-full overflow-scroll bg-white"
+          enter="transition ease-out duration-200 transform"
+          enterFrom="opacity-0 -translate-y-2"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition ease-out duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <ul className="px-5 py-2">
+            <li>
+              <a href="https://www.linkedin.com/in/alexsavagedata/" target="_blank" className="btn text-white bg-blue-600 hover:bg-blue-700 w-full my-2 flex items-center justify-center" onClick={() => setMobileNavOpen(false)}>
+                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 mr-2" />
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/screwyforcepush" target="_blank" className="btn text-white bg-gray-900 hover:bg-gray-800 w-full my-2 flex items-center justify-center" onClick={() => setMobileNavOpen(false)}>
+                <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2" />
+                GitHub
+              </a>
+            </li>
+          </ul>          
+        </Transition>
+      </div>
+    </div>
+  )
+}
+
+================
+File: next.config.js
+================
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
+
+module.exports = nextConfig
+
+================
+File: postcss.config.js
+================
+module.exports = {
+  plugins: {
+    'postcss-import': {},
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+================
+File: app/(default)/page.tsx
+================
+export const metadata = {
+  title: 'Alex Savage - AI Product Engineer',
+  description: 'Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy',
+}
+
+import Hero from '@/components/hero'
+import Features from '@/components/features'
+import FeaturesBlocks from '@/components/features-blocks'
+import Testimonials from '@/components/testimonials'
+import Newsletter from '@/components/newsletter'
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      {/* <Features /> */}
+      <FeaturesBlocks />
+      <Testimonials />
+      <Newsletter />
+    </>
+  )
+}
+
+================
+File: components/ui/footer.tsx
+================
+import Logo from './logo'
+
+export default function Footer() {
+  return (null
+    // <footer>
+    //   <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+    //     {/* Top area: Blocks */}
+    //     <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-gray-200">
+
+    //       {/* 1st block */}
+    //       <div className="sm:col-span-12 lg:col-span-3">
+    //         <div className="mb-2">
+    //           <Logo />
+    //         </div>
+    //         <div className="text-sm text-gray-600">
+    //           <a href="#0" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Terms</a> · <a href="#0" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Privacy Policy</a>
+    //         </div>
+    //       </div>
+
+    //       {/* 2nd block */}
+    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+    //         <h6 className="text-gray-800 font-medium mb-2">Products</h6>
+    //         <ul className="text-sm">
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Web Studio</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">DynamicBox Flex</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Programming Forms</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Integrations</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Command-line</a>
+    //           </li>
+    //         </ul>
+    //       </div>
+
+    //       {/* 3rd block */}
+    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+    //         <h6 className="text-gray-800 font-medium mb-2">Resources</h6>
+    //         <ul className="text-sm">
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Documentation</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Tutorials & Guides</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Blog</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Support Center</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Partners</a>
+    //           </li>
+    //         </ul>
+    //       </div>
+
+    //       {/* 4th block */}
+    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+    //         <h6 className="text-gray-800 font-medium mb-2">Company</h6>
+    //         <ul className="text-sm">
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Home</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">About us</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Company values</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
+    //           </li>
+    //           <li className="mb-2">
+    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Privacy Policy</a>
+    //           </li>
+    //         </ul>
+    //       </div>
+
+    //       {/* 5th block */}
+    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
+    //         <h6 className="text-gray-800 font-medium mb-2">Subscribe</h6>
+    //         <p className="text-sm text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
+    //         <form>
+    //           <div className="flex flex-wrap mb-4">
+    //             <div className="w-full">
+    //               <label className="block text-sm sr-only" htmlFor="newsletter">Email</label>
+    //               <div className="relative flex items-center max-w-xs">
+    //                 <input id="newsletter" type="email" className="form-input w-full text-gray-800 px-3 py-2 pr-12 text-sm" placeholder="Your email" required />
+    //                 <button type="submit" className="absolute inset-0 left-auto" aria-label="Subscribe">
+    //                   <span className="absolute inset-0 right-auto w-px -ml-px my-2 bg-gray-300" aria-hidden="true"></span>
+    //                   <svg className="w-3 h-3 fill-current text-blue-600 mx-3 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+    //                     <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />
+    //                   </svg>
+    //                 </button>
+    //               </div>
+    //               {/* Success message */}
+    //               {/* <p className="mt-2 text-green-600 text-sm">Thanks for subscribing!</p> */}
+    //             </div>
+    //           </div>
+    //         </form>
+    //       </div>
+
+    //     </div>
+
+    //     {/* Bottom area */}
+    //     <div className="md:flex md:items-center md:justify-between py-4 md:py-8 border-t border-gray-200">
+
+    //       {/* Social as */}
+    //       <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
+    //         <li>
+    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Twitter">
+    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    //               <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
+    //             </svg>
+    //           </a>
+    //         </li>
+    //         <li className="ml-4">
+    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Github">
+    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    //               <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
+    //             </svg>
+    //           </a>
+    //         </li>
+    //         <li className="ml-4">
+    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="LinkedIn">
+    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    //               <path d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
+    //             </svg>
+    //           </a>
+    //         </li>
+    //       </ul>
+
+    //       {/* Copyrights note */}
+    //       <div className="text-sm text-gray-600 mr-4">&copy; Cruip.com. All rights reserved.</div>
+
+    //     </div>
+
+    //   </div>
+    // </footer>
+  )
+}
+
+================
+File: components/ui/header.tsx
+================
+'use client'
+
+import { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link'
+import Logo from './logo'
+import Dropdown from '@/components/utils/dropdown'
+import MobileMenu from './mobile-menu'
+
+export default function Header() {
+
+  const [top, setTop] = useState<boolean>(true)
+
+  // detect whether user has scrolled the page down by 10px
+  const scrollHandler = () => {
+    window.pageYOffset > 10 ? setTop(false) : setTop(true)
+  }  
+
+  useEffect(() => {
+    scrollHandler()
+    window.addEventListener('scroll', scrollHandler)
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [top])
+
+  return (
+    <header className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${!top ? 'bg-white backdrop-blur-sm shadow-lg' : ''}`}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="flex items-center justify-between h-16 md:h-20">
+
+          {/* Site branding */}
+          <div className="shrink-0 mr-4">
+            <Logo />
+          </div>
+
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex md:grow">
+            {/* Desktop sign in links */}
+            <ul className="flex grow justify-end flex-wrap items-center">
+              <div>
+                <a className="btn text-white bg-blue-600 hover:bg-blue-700 w-10 h-10 mb-4 sm:w-auto sm:mb-0 flex items-center justify-center" href="https://www.linkedin.com/in/alexsavagedata/" target="_blank">
+                  <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 mr-2" />
+                  <span className="hidden sm:inline">LinkedIn</span>
+                </a>
+              </div>
+              <div>
+                <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-10 h-10 sm:w-auto sm:ml-4 flex items-center justify-center" href="https://github.com/screwyforcepush" target="_blank">
+                  <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2" />
+                  <span className="hidden sm:inline">GitHub</span>
+                </a>
+              </div>
+            </ul>
+          </nav>
+
+          <MobileMenu />
+
+        </div>
+      </div>
+    </header>
+  )
+}
+
+================
+File: components/ui/logo.tsx
+================
+import Link from 'next/link'
+import Image from 'next/image'
+
+
+export default function Logo() {
+  return (
+    <Link href="https://advisorsquad.ai/" className="block" aria-label="AdvisorSquad">
+      <Image src="/images/monocle.png" alt="Logo" width={32} height={32} />
+    </Link>
+  )
+}
+
+================
+File: components/banner.tsx
+================
+'use client'
+
+import { useState } from 'react'
+
+export default function Banner() {
+
+  const [bannerOpen, setBannerOpen] = useState<boolean>(true)
+
+  return (
+    <>
+      {/* {bannerOpen && (
+        <div className="fixed bottom-0 right-0 w-full md:bottom-8 md:right-12 md:w-auto z-50">
+          <div className="bg-slate-800 text-slate-50 text-sm p-3 md:rounded shadow-lg flex justify-between">
+            <div className='text-slate-500 inline-flex'> <a className="font-medium hover:underline text-emerald-400" href="https://cruip.com/simple/" target="_blank" rel="noreferrer">Explore GPTs</a></div>
+            <button className="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-gray-700" onClick={() => setBannerOpen(false)}>
+              <span className="sr-only">Close</span>
+              <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 16 16">
+                <path d="M12.72 3.293a1 1 0 00-1.415 0L8.012 6.586 4.72 3.293a1 1 0 00-1.414 1.414L6.598 8l-3.293 3.293a1 1 0 101.414 1.414l3.293-3.293 3.293 3.293a1 1 0 001.414-1.414L9.426 8l3.293-3.293a1 1 0 000-1.414z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )} */}
+    </>
+  )
+}
+
+================
+File: components/features-blocks.tsx
+================
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserTie, faChartLine, faBriefcase, faBuilding, faBrain, faUsers, faCode, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
+export default function FeaturesBlocks() {
+  return (
+    <section className="relative">
+
+      {/* Section background (needs .relative class on parent and next sibling elements) */}
+      <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gray-900 pointer-events-none" aria-hidden="true"></div>
+      <div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-gray-200 transform translate-y-1/2"></div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="py-12 md:py-20">
+
+          {/* Section header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h2 className="h2 mb-4">Portfolio</h2>
+            <p className="text-xl text-gray-600">Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy</p>
+          </div>
+
+          {/* Items */}
+          <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+
+            {/* 1st item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.linkedin.com/posts/alexsavagedata_i-created-a-digital-twin-generator-for-sales-activity-7289475272842625025-gBGw" target="_blank">
+              <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-blue-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faUserTie} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-blue-600 transition-colors duration-300">Sales Roleplay with Digital Twin</h4>
+              <p className="text-gray-600 text-center">A digital twin generator for sales training that allows realistic roleplaying scenarios with AI-powered customer personas.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-blue-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 2nd item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.startupsim.pro/" target="_blank">
+              <div className="absolute inset-0 bg-green-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-green-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faChartLine} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-green-600 transition-colors duration-300">Startup Simulator</h4>
+              <p className="text-gray-600 text-center">An interactive simulation platform for entrepreneurs to test business strategies and scenarios in a risk-free environment. Built for MENA clients.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-green-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 3rd item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://bizsim.flowguard.app/" target="_blank">
+              <div className="absolute inset-0 bg-purple-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-purple-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faBriefcase} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-purple-600 transition-colors duration-300">Business Advisor Simulation</h4>
+              <p className="text-gray-600 text-center">An AI-powered business advisor that provides personalized guidance and recommendations for business growth and optimization.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-purple-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 4th item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.aimme.app/" target="_blank">
+              <div className="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-red-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faBrain} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-red-600 transition-colors duration-300">Business AI Maturity Assessment</h4>
+              <p className="text-gray-600 text-center">A comprehensive tool that evaluates and scores a company's AI implementation maturity, providing actionable insights for improvement.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-red-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 5th item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://github.com/screwyforcepush/ai-team-collaboration" target="_blank">
+              <div className="absolute inset-0 bg-yellow-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-yellow-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faUsers} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-yellow-600 transition-colors duration-300">Multi Persona AI Team Collaboration</h4>
+              <p className="text-gray-600 text-center">A platform that enables collaboration between multiple AI personas, each with unique expertise, to solve complex business problems.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-yellow-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 6th item */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://github.com/screwyforcepush/linkedpost" target="_blank">
+              <div className="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-indigo-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faCode} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-indigo-600 transition-colors duration-300">Research and Blog Generation Pipeline</h4>
+              <p className="text-gray-600 text-center">An automated pipeline for research aggregation and blog content generation, streamlining the content creation process.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-indigo-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+            {/* 7th item - Additional project */}
+            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden md:col-span-3 lg:col-span-3" href="https://github.com/screwyforcepush/self-optimising-content-gen" target="_blank">
+              <div className="absolute inset-0 bg-teal-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-teal-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <FontAwesomeIcon icon={faChartLine} className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-teal-600 transition-colors duration-300">Research to LinkedIn Post with RL Feedback Loop Pipeline</h4>
+              <p className="text-gray-600 text-center">An advanced content generation system that uses reinforcement learning to optimize LinkedIn posts based on engagement metrics and feedback.</p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-teal-600 font-medium">
+                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: .gitignore
+================
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# contentlayer
+.contentlayer
+
+================
+File: tailwind.config.js
+================
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        gray: {
+          100: '#FBFBFB',
+          200: '#EAEAEA',
+          300: '#DFDFDF',
+          400: '#999999',
+          500: '#7F7F7F',
+          600: '#666666',
+          700: '#4C4C4C',
+          800: '#333333',
+          900: '#191919',
+        },
+        blue: {
+          100: '#E6F0FD',
+          200: '#CCE2FC',
+          300: '#99C5FA',
+          400: '#66A9F7',
+          500: '#338CF5',
+          600: '#0070F4',
+          700: '#0064DA',
+          800: '#0059C2',
+          900: '#004391',
+        },
+        teal: {
+          100: '#E6FFFA',
+          200: '#B2F5EA',
+          300: '#81E6D9',
+          400: '#4FD1C5',
+          500: '#3ABAB4',
+          600: '#319795',
+          700: '#2C7A7B',
+          800: '#285E61',
+          900: '#234E52',
+        },
+      },
+      boxShadow: {
+        xs: '0 0 0 1px rgba(0, 0, 0, 0.16)',
+        sm: '0 1px 2px 0 rgba(0, 0, 0, 0.16)',
+        default: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
+        outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        none: 'none',
+      },
+      spacing: {
+        '9/16': '56.25%',
+        '3/4': '75%',
+        '1/1': '100%',
+      },
+      fontFamily: {
+        inter: ['var(--font-inter)', 'sans-serif'],
+      },
+      fontSize: {
+        xs: '0.75rem',
+        sm: '0.875rem',
+        base: '1rem',
+        lg: '1.125rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem',
+        '4xl': '2.625rem',
+        '5xl': '3.25rem',
+        '6xl': '5.5rem',
+      },
+      inset: {
+        '1/2': '50%',
+        'full': '100%',
+      },
+      letterSpacing: {
+        tighter: '-0.02em',
+        tight: '-0.01em',
+        normal: '0',
+        wide: '0.01em',
+        wider: '0.02em',
+        widest: '0.4em',
+      },
+      lineHeight: {
+        none: '1',
+        tighter: '1.125',
+        tight: '1.25',
+        snug: '1.375',
+        normal: '1.5',
+        relaxed: '1.625',
+        loose: '2',
+        '3': '.75rem',
+        '4': '1rem',
+        '5': '1.2rem',
+        '6': '1.5rem',
+        '7': '1.75rem',
+        '8': '2rem',
+        '9': '2.25rem',
+        '10': '2.5rem',
+      },
+      minWidth: {
+        '10': '2.5rem',
+        '48': '12rem',
+      },
+      opacity: {
+        '90': '0.9',
+      },
+      scale: {
+        '98': '.98'
+      },
+      animation: {
+        float: 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)', },
+          '50%': { transform: 'translateY(-5%)', },
+        },
+      },
+      zIndex: {
+        '-1': '-1',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+};
+
+================
+File: app/layout.tsx
+================
+import './css/style.css'
+
+import { Inter } from 'next/font/google'
+
+import Header from '@/components/ui/header'
+import Banner from '@/components/banner'
+import { Analytics } from '@vercel/analytics/react';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap'
+})
+
+export const metadata = {
+  title: 'Alex Savage - AI Product Engineer',
+  description: 'Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
+        <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
+          <Header />
+          {children}
+          <Analytics />
+          <Banner />
+        </div>
+      </body>
+    </html>
+  )
+}
+
+================
+File: components/newsletter.tsx
+================
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+
+export default function Newsletter() {
+  return (
+    <section>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pb-12 md:pb-20">
+
+          {/* CTA box */}
+          <div className="relative bg-gray-900 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
+
+            {/* Background illustration */}
+            <div className="absolute right-0 bottom-0 pointer-events-none hidden lg:block" aria-hidden="true">
+              <svg width="428" height="328" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient cx="35.542%" cy="34.553%" fx="35.542%" fy="34.553%" r="96.031%" id="ni-a">
+                    <stop stopColor="#DFDFDF" offset="0%" />
+                    <stop stopColor="#4C4C4C" offset="44.317%" />
+                    <stop stopColor="#333" offset="100%" />
+                  </radialGradient>
+                </defs>
+                <g fill="none" fillRule="evenodd">
+                  <g fill="#FFF">
+                    <ellipse fillOpacity=".04" cx="185" cy="15.576" rx="16" ry="15.576" />
+                    <ellipse fillOpacity=".24" cx="100" cy="68.402" rx="24" ry="23.364" />
+                    <ellipse fillOpacity=".12" cx="29" cy="251.231" rx="29" ry="28.231" />
+                    <ellipse fillOpacity=".64" cx="29" cy="251.231" rx="8" ry="7.788" />
+                    <ellipse fillOpacity=".12" cx="342" cy="31.303" rx="8" ry="7.788" />
+                    <ellipse fillOpacity=".48" cx="62" cy="126.811" rx="2" ry="1.947" />
+                    <ellipse fillOpacity=".12" cx="78" cy="7.072" rx="2" ry="1.947" />
+                    <ellipse fillOpacity=".64" cx="185" cy="15.576" rx="6" ry="5.841" />
+                  </g>
+                  <circle fill="url(#ni-a)" cx="276" cy="237" r="200" />
+                </g>
+              </svg>
+            </div>
+
+            <div className="relative flex flex-col lg:flex-row justify-between items-center">
+
+              {/* CTA content */}
+              <div className="text-center lg:text-left lg:max-w-xl">
+                <h3 className="h3 text-white mb-2">Let's Connect</h3>
+                <p className="text-gray-300 text-lg mb-6">Interested in AI solutions, product development, or collaboration opportunities? Reach out through any of these channels:</p>
+                
+                <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                  <a className="btn text-white bg-blue-600 hover:bg-blue-700 shadow flex items-center justify-center" href="https://www.linkedin.com/in/alexsavagedata/" target="_blank">
+                    <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 mr-2" />
+                    LinkedIn
+                  </a>
+                  <a className="btn text-white bg-gray-800 hover:bg-gray-700 shadow flex items-center justify-center" href="https://github.com/screwyforcepush" target="_blank">
+                    <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: components/features.tsx
+================
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { Transition } from '@headlessui/react'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRobot, faCode, faBrain } from '@fortawesome/free-solid-svg-icons'
+
+export default function Features() {
+  
+  const [tab, setTab] = useState<number>(1)
+
+  const tabs = useRef<HTMLDivElement>(null)
+
+  const heightFix = () => {
+    if (tabs.current && tabs.current.parentElement) tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`
+  }
+
+  useEffect(() => {
+    heightFix()
+  }, []) 
+
+  return (
+    <section className="relative">
+
+      {/* Section background (needs .relative class on parent and next sibling elements) */}
+      <div className="absolute inset-0 bg-gray-100 pointer-events-none mb-16" aria-hidden="true"></div>
+      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-12 md:pt-20">
+
+          {/* Section header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+            <h1 className="h2 mb-4">Solutions</h1>
+            <p className="text-xl text-gray-600">From state of the art prompt crafting to autonomous AI orchestrated systems</p>
+          </div>
+
+          {/* Section content */}
+          <div className="md:grid md:grid-cols-12 md:gap-6">
+
+            {/* Content */}
+            <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
+              <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
+                <h3 className="h3 mb-3">AI Expertise</h3>
+                <p className="text-xl text-gray-600">Leveraging cutting-edge AI technologies to deliver innovative solutions for businesses and individuals. From custom AI implementations to advanced automation systems.</p>
+              </div>
+              {/* Tabs buttons */}
+              <div className="mb-8 md:mb-0">
+              <a
+                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
+                  href="#0"
+                  onClick={(e) => { e.preventDefault(); setTab(1); }}
+                >
+                  <div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">AI Integration</div>
+                    <div className="text-gray-600">Custom AI solutions integrated into your existing workflows and systems.</div>
+                  </div>
+                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                    <FontAwesomeIcon icon={faRobot} className="w-4 h-4" />
+                  </div>
+                </a>
+                <a
+                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
+                  href="#0"
+                  onClick={(e) => { e.preventDefault(); setTab(2); }}
+                >
+                  <div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">LLM Development</div>
+                    <div className="text-gray-600">Expert implementation of large language models for your specific use cases</div>
+                  </div>
+                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                    <FontAwesomeIcon icon={faCode} className="w-4 h-4" />
+                  </div>
+                </a>
+                <a
+                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 3 ? 'bg-white shadow-md border-gray-200 hover:shadow-lg' : 'bg-gray-200 border-transparent'}`}
+                  href="#0"
+                  onClick={(e) => { e.preventDefault(); setTab(3); }}
+                >
+                  <div>
+                    <div className="font-bold leading-snug tracking-tight mb-1">Autonomous Systems</div>
+                    <div className="text-gray-600">AI agents that work autonomously to accomplish complex tasks. <br></br>Daily progress updates. <br></br>On-demand human-AI team collaboration.</div>
+                  </div>
+                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                    <FontAwesomeIcon icon={faBrain} className="w-4 h-4" />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Tabs items */}
+            <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1">
+              <div className="transition-all">
+                <div className="relative flex flex-col text-center lg:text-right" data-aos="zoom-y-out" ref={tabs}>
+                  
+                  {/* Item 1 */}
+                  <Transition
+                    show={tab === 1}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-f irst"
+                    enterFrom="opacity-0 translate-y-16"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-16"
+                    beforeEnter={() => heightFix()}
+                    unmount={false}                     
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image className="md:max-w-none mx-auto rounded" src="/images/roundtable.png" width={500} height="462" alt="Features bg" />
+                    </div>
+                  </Transition>
+                  {/* Item 2 */}
+                  <Transition
+                    show={tab === 2}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-16"
+                    beforeEnter={() => heightFix()}
+                    unmount={false}                     
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image className="md:max-w-none mx-auto rounded" src="/images/gptsss.png" width={500} height="462" alt="Features bg" />
+                    </div>
+                  </Transition>
+                  {/* Item 3 */}
+                  <Transition
+                    show={tab === 3}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-16"
+                    beforeEnter={() => heightFix()}
+                    unmount={false}                     
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image className="md:max-w-none mx-auto rounded" src="/images/sleep.png" width={500} height="462" alt="Features bg" />
+                    </div>
+                  </Transition>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: components/hero.tsx
+================
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+
+
+export default function Hero() {
+  return (
+    <section className="relative">
+
+      {/* Illustration behind hero content */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1" aria-hidden="true">
+        <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
+              <stop stopColor="#FFF" offset="0%" />
+              <stop stopColor="#EAEAEA" offset="77.402%" />
+              <stop stopColor="#DFDFDF" offset="100%" />
+            </linearGradient>
+          </defs>
+          <g fill="url(#illustration-01)" fillRule="evenodd">
+            <circle cx="1232" cy="128" r="128" />
+            <circle cx="155" cy="443" r="64" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+        {/* Hero content */}
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+          {/* Section header */}
+          <div className="text-center pb-12 md:pb-16">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Alex <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Savage</span></h1>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 mb-8" data-aos="zoom-y-out" data-aos-delay="150">Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy</p>
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
+                <div>
+                  <a className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"  href="https://www.linkedin.com/in/alexsavagedata/" target="_blank">
+                    <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5 mr-2" />
+                    LinkedIn
+                  </a>
+                </div>
+                <div>
+                  <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://github.com/screwyforcepush" target="_blank">
+                    <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+================
+File: components/testimonials.tsx
+================
+import Image from 'next/image'
+import TestimonialImage from '@/public/images/headshot.jpg'
+
+export default function Testimonials() {
+  return (
+    <section className="relative">
+
+      {/* Illustration behind content */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -mb-32" aria-hidden="true">
+        <svg width="1760" height="518" viewBox="0 0 1760 518" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-02">
+              <stop stopColor="#FFF" offset="0%" />
+              <stop stopColor="#EAEAEA" offset="77.402%" />
+              <stop stopColor="#DFDFDF" offset="100%" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(0 -3)" fill="url(#illustration-02)" fillRule="evenodd">
+            <circle cx="1630" cy="128" r="128" />
+            <circle cx="178" cy="481" r="40" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="py-12 md:py-20">
+
+          {/* Section header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+            <h2 className="h2 mb-4">Product - Process - People <br></br>
+            Business - Data - Tech</h2>
+            <p className="text-xl text-gray-600" data-aos="zoom-y-out">Consumertech portfolio MAU 20m+<br>
+            </br> Transformative solutions for startup, scaleup, enterprise<br></br>
+            Advisor to founders, investors, vendor procurement</p>
+          </div>
+
+          {/* Items */}
+          <div className="max-w-sm md:max-w-4xl mx-auto grid gap-2 grid-cols-4 md:grid-cols-5">
+
+            {/* Item */}
+            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Image src="/images/logos/ABS-CBN.svg" alt="abs-cbn" width={125} height={39} />
+            </div>
+
+            {/* Item */}
+            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Image src="/images/logos/datazoom_logo.webp" alt="datazoom" width={125} height={39} />
+            </div>
+
+            {/* Item */}
+            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Image src="/images/logos/ericsson.png" alt="ericsson" width={125} height={39} />
+            </div>
+
+            {/* Item */}
+            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Image src="/images/logos/iflix7255.jpeg" alt="iflix" width={125} height={39} />
+            </div>
+
+            {/* Item */}
+            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto col-start-2 col-end-4">
+            <Image src="/images/logos/shine_logo.jpeg" alt="shine" width={125} height={39} />
+            </div>
+
+          </div>
+
+          {/* Testimonials */}
+          <div className="max-w-3xl mx-auto mt-20 pt-20" data-aos="zoom-y-out">
+            <div className="relative flex items-start border-2 border-gray-200 rounded bg-white">
+
+              {/* Testimonial */}
+              <div className="text-center px-12 py-8 pt-20 mx-4 md:mx-0">
+                <div className="absolute -top-10 -mt-8 left-1/2 transform -translate-x-1/2">
+                  <Image className="relative rounded-full" src={TestimonialImage} width={150} height={150} alt="Testimonial 01" />
+                </div>
+                <blockquote className="text-xl font-medium mb-4">
+                Experienced Leader, melding data, AI, and product strategy to drive business outcomes worldwide. Known for integrating data insights, business acumen, and technical skill, I've pioneered impactful innovations and data-driven decision-making, leading diverse teams to align with key business objectives.
+                </blockquote>
+                <cite className="block font-bold text-lg not-italic mb-1">Alex Savage</cite>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+================
+File: package.json
+================
+{
+  "name": "simple-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@headlessui/react": "^1.7.17",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "@vercel/analytics": "^1.1.1",
+    "aos": "^3.0.0-beta.6",
+    "next": "^14.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/aos": "^3.0.7",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6"
+  }
+}
+
+================
+File: README.md
+================
+# Free Tailwind landing page template
+
+![Simple TailwindCSS template preview](https://user-images.githubusercontent.com/2683512/231426766-72ae7bcd-618b-4a3e-87cd-b46a464bde61.png)
+
+**Simple Light** is a free landing page template built on top of **TailwindCSS** and fully coded in **React** / **Next.js**. Simple light is designed to provide all the basic components a developer need to create a landing page for SaaS products, online services, and more. 
+Use it for whatever you want, and be sure to reach us out on Twitter if you build anything cool/useful with it.
+Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
+
+*Version 1.3.3 built with Tailwind CSS and React + Vite is available [here](https://github.com/cruip/tailwind-landing-page-template/releases/tag/1.3.3).*
+
+## Live demo
+
+Check the live demo here 👉️ [https://simple.cruip.com/](https://simple.cruip.com/)
+
+## Simple Pro
+
+[![Simple Pro](https://user-images.githubusercontent.com/2683512/151178282-fd81b300-349a-42c3-a30a-f70f6e711e74.png)](https://cruip.com/)
+
+## Design files
+
+If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3HOZMpf
+
+## Usage
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+### Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+### Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+### Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+### Support notes
+This template has been developed with the App Router (`app`) and React Server Components. If you’re unfamiliar with these beta features, you can find more information about them on the Next.js beta documentation page. So, please note that any request dealing with React (e.g. extra features, customisations, et cetera) is to be considered out of the support scope.
+
+For more information about what support covers, please see our (FAQs)[https://cruip.com/faq/].
+
+## Credits
+
+- [Nucleo](https://nucleoapp.com/)
+
+## Terms and License
+
+- Released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.html).
+- Copyright 2020 [Cruip](https://cruip.com/).
+- Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
+- Attribution is not required, although it is really appreciated.
+
+## About Us
+
+We're an Italian developer/designer duo creating high-quality design/code resources for developers, makers, and startups.
+
+## Stay in the loop
+
+If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
+
+================
+File: CHANGELOG.md
+================
+# CHANGELOG.md
+
+## [2.4.0] - 2023-12-08
+
+Update to Next.js 14
+Update dependencies
+
+## [2.3.2] - 2023-10-04
+
+Update Twitter icon
+Update dependencies
+
+## [2.3.0] - 2023-06-20
+
+Fix issue with Google Fonts
+
+## [2.2.1] - 2023-06-13
+
+Fix minor issue
+
+## [2.2.0] - 2023-05-31
+
+Update dependencies and fix some issues
+
+## [2.1.0] - 2023-05-07
+
+Modal video improvements
+
+## [2.0.0] - 2023-03-31
+
+Conversion to Next.js
+
+## [1.3.3] - 2023-03-28
+
+- Fix video
+
+## [1.3.2] - 2023-03-28
+
+- Add self-hosted video
+
+## [1.3.1] - 2023-02-13
+
+- Update dependencies
+
+## [1.3.0] - 2022-07-15
+
+- Update dependencies
+- Update React to v18
+- Replace Sass with CSS files
+
+## [1.1.0] - 2022-01-27
+
+- Replace CRA (Create React App) with Vite
+- Remove Craco
+- Update dependencies
+
+## [1.0.1] - 2020-10-19
+
+Fix issue with testimonail image on mobile
+
+## [1.0.0] - 2020-10-15
+
+First release
+
+
+
+================================================================
+End of Codebase
+================================================================

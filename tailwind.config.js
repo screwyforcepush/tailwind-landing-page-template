@@ -9,37 +9,92 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          100: '#FBFBFB',
-          200: '#EAEAEA',
+          100: '#F5F5F7',
+          200: '#E8E8E8',
           300: '#DFDFDF',
-          400: '#999999',
-          500: '#7F7F7F',
-          600: '#666666',
-          700: '#4C4C4C',
-          800: '#333333',
-          900: '#191919',
+          400: '#B6B6B6',
+          500: '#8C8C8C',
+          600: '#505050',
+          700: '#353535',
+          800: '#262626',
+          900: '#171720',
         },
         blue: {
-          100: '#E6F0FD',
-          200: '#CCE2FC',
-          300: '#99C5FA',
-          400: '#66A9F7',
-          500: '#338CF5',
+          100: '#E6F1FF',
+          200: '#CCE4FF',
+          300: '#99C8FF',
+          400: '#66ADFF',
+          500: '#3A86FF',
           600: '#0070F4',
           700: '#0064DA',
           800: '#0059C2',
           900: '#004391',
         },
-        teal: {
+        cyan: {
           100: '#E6FFFA',
-          200: '#B2F5EA',
-          300: '#81E6D9',
-          400: '#4FD1C5',
-          500: '#3ABAB4',
-          600: '#319795',
-          700: '#2C7A7B',
-          800: '#285E61',
-          900: '#234E52',
+          200: '#B3F5FF',
+          300: '#80EEFF',
+          400: '#4DDBFF',
+          500: '#00D8FF',
+          600: '#00B7D6',
+          700: '#0097B2',
+          800: '#007A8F',
+          900: '#005E6B',
+        },
+        purple: {
+          100: '#F6E7FF',
+          200: '#EAC9FF',
+          300: '#D592FF',
+          400: '#C05CFF',
+          500: '#8C1EFF',
+          600: '#7200E0',
+          700: '#5D00B5',
+          800: '#48008F',
+          900: '#34006A',
+        },
+        pink: {
+          100: '#FFE2F0',
+          200: '#FFC2E0',
+          300: '#FF94C2',
+          400: '#FF66A3',
+          500: '#F72585',
+          600: '#D61672',
+          700: '#AD0D5F',
+          800: '#84094D',
+          900: '#5B063A',
+        },
+        teal: {
+          100: '#E6FFF9',
+          200: '#B3FFEE',
+          300: '#80FFDE',
+          400: '#4DFFD0',
+          500: '#00F5D4',
+          600: '#00CBB2',
+          700: '#00A191',
+          800: '#007C70',
+          900: '#00584F',
+        },
+        green: {
+          100: '#ECFFF1',
+          200: '#D0FFD6',
+          300: '#A1FFB0',
+          400: '#73FF8A',
+          500: '#44FF65',
+          600: '#00D92F',
+          700: '#00B025',
+          800: '#00871D',
+          900: '#005E13',
+        },
+        yellow: {
+          100: '#FFFDE6',
+          200: '#FFF7B3',
+          300: '#FFF180',
+          400: '#FFEC4D',
+          500: '#FFE600',
+          600: '#D7C000',
+          700: '#AE9C00',
+          800: '#867700',
+          900: '#5E5300',
         },
       },
       boxShadow: {
@@ -52,6 +107,10 @@ module.exports = {
         '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
         inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
         outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        glow: '0 0 15px rgba(58, 134, 255, 0.5)',
+        'glow-purple': '0 0 15px rgba(140, 30, 255, 0.5)',
+        'glow-pink': '0 0 15px rgba(247, 37, 133, 0.5)',
+        'glow-cyan': '0 0 15px rgba(0, 245, 212, 0.5)',
         none: 'none',
       },
       spacing: {
@@ -61,6 +120,7 @@ module.exports = {
       },
       fontFamily: {
         inter: ['var(--font-inter)', 'sans-serif'],
+        jetbrains: ['var(--font-jetbrains)', 'monospace'],
       },
       fontSize: {
         xs: '0.75rem',
@@ -73,6 +133,8 @@ module.exports = {
         '4xl': '2.625rem',
         '5xl': '3.25rem',
         '6xl': '5.5rem',
+        '7xl': '6.5rem',
+        '8xl': '8rem',
       },
       inset: {
         '1/2': '50%',
@@ -85,6 +147,7 @@ module.exports = {
         wide: '0.01em',
         wider: '0.02em',
         widest: '0.4em',
+        'tech': '0.15em',
       },
       lineHeight: {
         none: '1',
@@ -109,25 +172,74 @@ module.exports = {
       },
       opacity: {
         '90': '0.9',
+        '5': '0.05',
       },
       scale: {
-        '98': '.98'
+        '98': '.98',
+        '101': '1.01',
+        '102': '1.02',
       },
       animation: {
         float: 'float 3s ease-in-out infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        bounce: 'bounce 1s infinite',
+        typing: 'typing 3.5s steps(40, end)',
+        blink: 'blink-caret .75s step-end infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)', },
-          '50%': { transform: 'translateY(-5%)', },
+          '50%': { transform: 'translateY(-10px)', },
+        },
+        typing: {
+          from: { width: '0' },
+          to: { width: '100%' }
+        },
+        'blink-caret': {
+          'from, to': { borderColor: 'transparent' },
+          '50%': { borderColor: '#3A86FF' }
         },
       },
       zIndex: {
         '-1': '-1',
+        '1': '1',
+      },
+      transitionDelay: {
+        '0': '0ms',
+        '2000': '2000ms',
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+      },
+      backgroundImage: {
+        'cyber-grid': 'linear-gradient(to right, rgba(58, 134, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(58, 134, 255, 0.1) 1px, transparent 1px)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      backgroundSize: {
+        'auto': 'auto',
+        'cover': 'cover',
+        'contain': 'contain',
+        'cyber-grid': '20px 20px',
       },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
+  ],
+  safelist: [
+    // Ensure these dynamic classes are not purged
+    {
+      pattern: /bg-(blue|purple|pink|cyan|green|teal|yellow|indigo|red)-(100|200|300|400|500|600|700|800|900)/,
+      variants: ['hover', 'focus'],
+    },
+    {
+      pattern: /text-(blue|purple|pink|cyan|green|teal|yellow|indigo|red)-(100|200|300|400|500|600|700|800|900)/,
+      variants: ['hover', 'focus'],
+    },
+    {
+      pattern: /border-(blue|purple|pink|cyan|green|teal|yellow|indigo|red)-(100|200|300|400|500|600|700|800|900)/,
+      variants: ['hover', 'focus'],
+    },
   ],
 };

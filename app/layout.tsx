@@ -1,10 +1,12 @@
 import './css/style.css'
 
-import { Inter } from 'next/font/google'
+import { JetBrains_Mono, Inter } from 'next/font/google'
+import Script from 'next/script'
 
 import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react'
+import ParticleBackground from '@/components/utils/particle-background'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -12,9 +14,15 @@ const inter = Inter({
   display: 'swap'
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  display: 'swap'
+})
+
 export const metadata = {
-  title: 'Alex Savage - AI Product Engineer',
-  description: 'Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy',
+  title: 'Alex Savage - AI Architect & Engineer',
+  description: 'Entrepreneur • AI Product Engineer • Ideation → Build → Deploy',
 }
 
 export default function RootLayout({
@@ -24,13 +32,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
+      <head>
+        <link rel="icon" href="/images/logo.png" sizes="any" />
+      </head>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-inter antialiased dark-theme text-gray-200 tracking-tight relative`}>
+
+        {/* Particle background */}
+        <ParticleBackground />
+        
         <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
           <Header />
           {children}
           <Analytics />
           <Banner />
         </div>
+        
       </body>
     </html>
   )

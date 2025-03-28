@@ -1,121 +1,148 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserTie, faChartLine, faBriefcase, faBuilding, faBrain, faUsers, faCode, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faUserTie, faChartLine, faBriefcase, faBuilding, faBrain, faUsers, faCode, faArrowRight, faMicrochip, faPhone, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
+import CyberpunkCard from './utils/cyberpunk-card'
+import GlitchText from './utils/glitch-text'
 
 export default function FeaturesBlocks() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      })
+    }, { threshold: 0.1 })
+
+    const section = document.getElementById('portfolio-section')
+    if (section) observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="relative">
+    <section id="portfolio-section" className="relative py-20">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gray-900 bg-opacity-80 pointer-events-none overflow-hidden z-0">
+        <div className="data-flow-bg absolute inset-0"></div>
+      </div>
+      
+      {/* Scrolling tech keywords */}
+      <div className="scrolling-keywords absolute top-20 w-full z-0 opacity-5 overflow-hidden">
+        <div className="scrolling-keywords-inner text-7xl font-jetbrains font-bold text-blue-500">
+          AI ARCHITECTURE MACHINE-LEARNING NEURAL-NETWORKS DESIGN-SYSTEMS ENGINEERING STRATEGY INNOVATION PROBLEMSOLVING
+        </div>
+      </div>
 
-      {/* Section background (needs .relative class on parent and next sibling elements) */}
-      <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gray-900 pointer-events-none" aria-hidden="true"></div>
-      <div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-gray-200 transform translate-y-1/2"></div>
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 z-10">
         <div className="py-12 md:py-20">
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">Portfolio</h2>
-            <p className="text-xl text-gray-600">Multi-Startup Entrepreneur • AI Product Engineer • Ideation → Build → Deploy</p>
+            <div className="inline-block cyberpunk-border p-2">
+              <h2 className="h2 mb-4 text-white font-jetbrains">
+                <GlitchText text="PORTFOLIO" variant="medium" enableHoverEffect={false} />
+              </h2>
+            </div>
+            <p className="text-xl text-gray-400 mt-6">
+              <span className="text-scan">Product Showcase: </span>
+              <span className="text-blue-400"> Learn more about my creations</span>
+            </p>
           </div>
 
-          {/* Items */}
-          <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+          {/* Portfolio grid */}
+          <div className="perspective-container max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none stagger-fade-in">
+            <CyberpunkCard
+              title="Crankshaft - AI Sales Engine"
+              description="An end to end solution to verify buyer intent and deliver high-quality live-transfer calls. Features real-time voice analysis and automated CRM integration."
+              icon={faPhone}
+              color="cyan-600"
+              link="https://www.crankshaft.ai/"
+              delay={100}
+            />
 
-            {/* 1st item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.linkedin.com/posts/alexsavagedata_i-created-a-digital-twin-generator-for-sales-activity-7289475272842625025-gBGw" target="_blank">
-              <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-blue-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faUserTie} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-blue-600 transition-colors duration-300">Sales Roleplay with Digital Twin</h4>
-              <p className="text-gray-600 text-center">A digital twin generator for sales training that allows realistic roleplaying scenarios with AI-powered customer personas.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-blue-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="FlowGuard - AI Value Platform"
+              description="An all-in-one platform for building, optimizing, and securing AI initiatives. Helps businesses quantify ROI, eliminate vendor lock-in, and accelerate AI deployment."
+              icon={faShieldHalved}
+              color="emerald-600"
+              link="https://www.flowguard.ai/"
+              delay={200}
+            />
 
-            {/* 2nd item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.startupsim.pro/" target="_blank">
-              <div className="absolute inset-0 bg-green-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-green-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faChartLine} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-green-600 transition-colors duration-300">Startup Simulator</h4>
-              <p className="text-gray-600 text-center">An interactive simulation platform for entrepreneurs to test business strategies and scenarios in a risk-free environment. Built for MENA clients.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-green-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Sales Roleplay with Digital Twin"
+              description="A digital twin generator for sales training that allows realistic roleplaying scenarios with AI-powered customer personas."
+              icon={faUserTie}
+              color="blue-600"
+              link="https://www.linkedin.com/posts/alexsavagedata_i-created-a-digital-twin-generator-for-sales-activity-7289475272842625025-gBGw"
+              delay={300}
+            />
 
-            {/* 3rd item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://bizsim.flowguard.app/" target="_blank">
-              <div className="absolute inset-0 bg-purple-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-purple-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faBriefcase} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-purple-600 transition-colors duration-300">Business Advisor Simulation</h4>
-              <p className="text-gray-600 text-center">An AI-powered business advisor that provides personalized guidance and recommendations for business growth and optimization.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-purple-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Startup Simulator"
+              description="An interactive simulation platform for entrepreneurs to test business strategies and scenarios in a risk-free environment. Built for MENA clients."
+              icon={faChartLine}
+              color="green-600"
+              link="https://www.startupsim.pro/"
+              delay={400}
+            />
 
-            {/* 4th item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://www.aimme.app/" target="_blank">
-              <div className="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-red-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faBrain} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-red-600 transition-colors duration-300">Business AI Maturity Assessment</h4>
-              <p className="text-gray-600 text-center">A comprehensive tool that evaluates and scores a company's AI implementation maturity, providing actionable insights for improvement.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-red-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Business Advisor Simulation"
+              description="An AI-powered business advisor that provides personalized guidance and recommendations for business growth and optimization."
+              icon={faBriefcase}
+              color="purple-600"
+              link="https://bizsim.flowguard.app/"
+              delay={500}
+            />
 
-            {/* 5th item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://github.com/screwyforcepush/ai-team-collaboration" target="_blank">
-              <div className="absolute inset-0 bg-yellow-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-yellow-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faUsers} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-yellow-600 transition-colors duration-300">Multi Persona AI Team Collaboration</h4>
-              <p className="text-gray-600 text-center">A platform that enables collaboration between multiple AI personas, each with unique expertise, to solve complex business problems.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-yellow-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Business AI Maturity Assessment"
+              description="A comprehensive tool that evaluates and scores a company's AI implementation maturity, providing actionable insights for improvement."
+              icon={faBrain}
+              color="red-600"
+              link="https://www.aimme.app/"
+              delay={600}
+            />
 
-            {/* 6th item */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" href="https://github.com/screwyforcepush/linkedpost" target="_blank">
-              <div className="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-indigo-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faCode} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-indigo-600 transition-colors duration-300">Research and Blog Generation Pipeline</h4>
-              <p className="text-gray-600 text-center">An automated pipeline for research aggregation and blog content generation, streamlining the content creation process.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-indigo-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Multi Persona AI Team Collaboration"
+              description="A platform that enables collaboration between multiple AI personas, each with unique expertise, to solve complex business problems."
+              icon={faUsers}
+              color="yellow-600"
+              link="https://github.com/screwyforcepush/ai-team-collaboration"
+              delay={700}
+            />
 
-            {/* 7th item - Additional project */}
-            <a className="group relative flex flex-col items-center p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden md:col-span-3 lg:col-span-3" href="https://github.com/screwyforcepush/self-optimising-content-gen" target="_blank">
-              <div className="absolute inset-0 bg-teal-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-              <div className="w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center bg-teal-600 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <FontAwesomeIcon icon={faChartLine} className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-2 text-center group-hover:text-teal-600 transition-colors duration-300">Research to LinkedIn Post with RL Feedback Loop Pipeline</h4>
-              <p className="text-gray-600 text-center">An advanced content generation system that uses reinforcement learning to optimize LinkedIn posts based on engagement metrics and feedback.</p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center text-teal-600 font-medium">
-                View Project <FontAwesomeIcon icon={faArrowRight} className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+            <CyberpunkCard
+              title="Research and Blog Generation Pipeline"
+              description="An automated pipeline for research aggregation and blog content generation, streamlining the content creation process."
+              icon={faCode}
+              color="indigo-600"
+              link="https://github.com/screwyforcepush/linkedpost"
+              delay={800}
+            />
 
+            <CyberpunkCard
+              title="Research to LinkedIn Post with RL Feedback Loop Pipeline"
+              description="An advanced content generation system that uses reinforcement learning to optimize LinkedIn posts based on engagement metrics and feedback."
+              icon={faMicrochip}
+              color="teal-600"
+              link="https://github.com/screwyforcepush/self-optimising-content-gen"
+              delay={900}
+            />
           </div>
-
         </div>
       </div>
+
+      {/* Circuit pattern overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900 to-transparent z-10"></div>
     </section>
   )
 }
