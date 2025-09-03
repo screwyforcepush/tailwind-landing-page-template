@@ -25,10 +25,11 @@ export default function Testimonials() {
   }, [])
 
   const partnerLogos = [
-    { name: "ABS-CBN", src: "/images/logos/ABS-CBN.svg" },
-    { name: "DataZoom", src: "/images/logos/datazoom_logo.webp" },
+    { name: "Fox", src: "/images/logos/Fox.png" },
     { name: "Ericsson", src: "/images/logos/ericsson.png" },
+    { name: "ABS-CBN", src: "/images/logos/ABS-CBN.svg" },
     { name: "iflix", src: "/images/logos/iflix7255.jpeg" },
+    { name: "DataZoom", src: "/images/logos/datazoom_logo.webp" },
     { name: "Shine", src: "/images/logos/shine_logo.jpeg" }
   ]
 
@@ -123,44 +124,79 @@ export default function Testimonials() {
           </div>
 
           {/* Partner logos */}
-          <div className="bg-black bg-opacity-30 p-6 rounded-lg cyberpunk-border mb-16">
-            <h3 className="text-center text-xl font-jetbrains text-gray-300 mb-8">SELECTED CLIENTS</h3>
-            <div className="max-w-4xl mx-auto grid gap-8 grid-cols-3 md:grid-cols-5 items-center justify-items-center">
-              {partnerLogos.map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center justify-center" 
-                  data-aos="fade-up" 
-                  data-aos-delay={index * 100}
-                >
-                  <div className="relative w-24 h-24 overflow-hidden rounded-lg shadow-lg" style={{ 
-                    background: 'white',
-                    boxShadow: '0 0 20px rgba(0,0,0,0.5)',
-                  }}>
-                    {/* Gradient overlay for fade effect */}
-                    <div className="absolute inset-0 rounded-lg" style={{ 
-                      background: 'radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.2) 100%)',
-                      zIndex: 1 
-                    }}></div>
-                    
-                    <div className="flex items-center justify-center h-full w-full">
-                      <Image 
-                        src={logo.src} 
-                        alt={logo.name} 
-                        width={100} 
-                        height={50} 
-                        style={{ 
-                          objectFit: 'contain', 
-                          maxWidth: '80%',
-                          maxHeight: '80%',
-                          zIndex: 2,
-                          position: 'relative' 
-                        }} 
-                      />
-                    </div>
-                  </div>
+          <div className="relative mb-16">
+            <div className="max-w-5xl mx-auto">
+
+              
+              {/* Cyberpunk container */}
+              <div className="relative bg-gradient-to-r from-transparent via-black/30 to-transparent p-10">
+              <h3 className="text-center text-xl font-jetbrains mb-2 tracking-widest">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+                  SELECTED CLIENTS
+                </span>
+              </h3>
+                {/* Cyberpunk grid overlay */}
+                <div className="absolute inset-0 cyberpunk-grid opacity-10"></div>
+                
+                {/* Circuit lines connecting logos */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent"></div>
                 </div>
-              ))}
+                <div className="absolute inset-0 flex items-center justify-center transform rotate-45">
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-400/10 to-transparent"></div>
+                </div>
+                
+                {/* Glowing edges */}
+                <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
+                <div className="absolute bottom-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
+                
+                {/* Floating data elements */}
+                <div className="absolute top-4 left-1/3 w-1 h-1 bg-cyan-400 rounded-full opacity-60 animate-pulse"></div>
+                <div className="absolute bottom-4 right-1/4 w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-blue-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
+                
+                <div className="relative grid gap-8 grid-cols-3 md:grid-cols-6 items-center justify-items-center py-8">
+                  {partnerLogos.map((logo, index) => (
+                    <div 
+                      key={index} 
+                      className="group" 
+                      data-aos="fade-up" 
+                      data-aos-delay={index * 100}
+                    >
+                      <div className="relative w-24 h-24 transition-all duration-300 group-hover:scale-105">
+                        {/* Main logo container with cyberpunk styling */}
+                        <div className="cyberpunk-border relative w-full h-full bg-white shadow-xl group-hover:shadow-blue-400/30 transition-all duration-300">
+                          
+                          {/* Corner angle cuts matching site theme */}
+                          <div className="absolute -top-1 -left-1 w-4 h-4 border-l-2 border-t-2 border-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 border-r-2 border-t-2 border-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                          <div className="absolute -bottom-1 -left-1 w-4 h-4 border-l-2 border-b-2 border-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                          <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r-2 border-b-2 border-blue-400 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                          
+                          {/* Subtle scan line effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          
+                          {/* Logo */}
+                          <div className="flex items-center justify-center w-full h-full p-3 relative z-10">
+                            <Image 
+                              src={logo.src} 
+                              alt={logo.name} 
+                              width={72} 
+                              height={48} 
+                              className="transition-all duration-300 group-hover:brightness-105"
+                              style={{ 
+                                objectFit: 'contain', 
+                                maxWidth: '100%',
+                                maxHeight: '100%'
+                              }} 
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
