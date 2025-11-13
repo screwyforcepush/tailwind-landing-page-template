@@ -4,13 +4,19 @@ import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
+interface CardLink {
+  label: string
+  href: string
+  icon?: IconDefinition
+}
+
 interface CyberpunkCardProps {
   title: string
   description: string
   icon: IconDefinition
   color: string
-  link: string
   delay?: number
+  extraLinks?: CardLink[]
 }
 
 export default function CyberpunkCard({ 
@@ -18,14 +24,14 @@ export default function CyberpunkCard({
   description, 
   icon, 
   color, 
-  link,
-  delay = 0
+  delay = 0,
+  extraLinks = []
 }: CyberpunkCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   const [glitching, setGlitching] = useState(false)
   const [visible, setVisible] = useState(false)
-  const cardRef = useRef<HTMLAnchorElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
 
   // Card reveal with delay
   useEffect(() => {
@@ -48,7 +54,7 @@ export default function CyberpunkCard({
   }, [isHovered])
 
   // Track mouse position for the 3D effect
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
     
     const rect = cardRef.current.getBoundingClientRect()
@@ -71,11 +77,9 @@ export default function CyberpunkCard({
   const visibleClass = visible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-8'
 
   return (
-    <a
+    <div
       ref={cardRef}
       className={`group relative flex flex-col items-center p-6 rounded-lg overflow-hidden transition-all duration-500 ease-out ${visibleClass}`}
-      href={link}
-      target="_blank"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
@@ -136,6 +140,27 @@ export default function CyberpunkCard({
       >
         {description}
       </p>
+
+      {extraLinks.length > 0 && (
+        <div 
+          className="relative flex flex-wrap justify-center gap-2 mb-2 z-10"
+          style={{ transform: `translateZ(${isHovered ? 45 : 20}px)` }}
+        >
+          {extraLinks.map(({ href, label, icon: linkIcon }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700 text-sm text-gray-300 hover:text-white hover:border-white transition-colors"
+            >
+              {linkIcon && <FontAwesomeIcon icon={linkIcon} className="w-3.5 h-3.5" />}
+              {label}
+            </a>
+          ))}
+        </div>
+      )}
       
       {/* View Project Button */}
       <div 
@@ -148,6 +173,6 @@ export default function CyberpunkCard({
       >
         Learn More <FontAwesomeIcon icon={faArrowRight} className={`w-3 h-3 ml-2 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
       </div>
-    </a>
+    </div>
   )
 }
