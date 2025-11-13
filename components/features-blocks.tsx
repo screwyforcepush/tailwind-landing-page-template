@@ -92,7 +92,7 @@ export default function FeaturesBlocks() {
 
             <CyberpunkCard
               title="Agentic Coding Observability Harness"
-              description="Agentic Coding Harness for orchestrating teams of collaborative Claude Code + Codex agents. Built in observability platform"
+              description="Agentic Coding Harness for orchestrating teams of collaborative Claude Code + Codex agents. Package includes an observability platform."
               icon={faBriefcase}
               color="purple-600"
               extraLinks={[
