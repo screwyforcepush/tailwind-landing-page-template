@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 interface CardLink {
   label: string
@@ -162,17 +162,6 @@ export default function CyberpunkCard({
         </div>
       )}
       
-      {/* View Project Button */}
-      <div 
-        className={`relative mt-auto flex items-center text-${color.replace('600', '500')} font-medium transition-all duration-300`}
-        style={{ 
-          transform: `translateZ(${isHovered ? 60 : 25}px)`,
-          opacity: isHovered ? 1 : 0,
-          visibility: isHovered ? 'visible' : 'hidden'
-        }}
-      >
-        Learn More <FontAwesomeIcon icon={faArrowRight} className={`w-3 h-3 ml-2 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
-      </div>
     </div>
   )
 }
