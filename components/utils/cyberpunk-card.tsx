@@ -79,7 +79,7 @@ export default function CyberpunkCard({
   return (
     <div
       ref={cardRef}
-      className={`group relative flex flex-col items-center p-6 rounded-lg overflow-hidden transition-all duration-500 ease-out ${visibleClass}`}
+      className={`group relative flex flex-col items-center p-6 h-full rounded-lg overflow-hidden transition-all duration-500 ease-out ${visibleClass}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
@@ -143,7 +143,7 @@ export default function CyberpunkCard({
 
       {extraLinks.length > 0 && (
         <div 
-          className="relative flex flex-wrap justify-center gap-2 mb-2 z-10"
+          className="relative mt-auto flex flex-wrap justify-center gap-2 z-10"
           style={{ transform: `translateZ(${isHovered ? 45 : 20}px)` }}
         >
           {extraLinks.map(({ href, label, icon: linkIcon }) => (

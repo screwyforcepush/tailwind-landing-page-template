@@ -56,7 +56,7 @@ export default function FeaturesBlocks() {
           </div>
 
           {/* Portfolio grid */}
-          <div className="perspective-container max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none stagger-fade-in">
+          <div className="perspective-container max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none stagger-fade-in">
             <CyberpunkCard
               title="Crankshaft - AI Sales Engine"
               description="An end to end solution to verify buyer intent and deliver high-quality live-transfer calls. Features real-time voice analysis and automated CRM integration."
