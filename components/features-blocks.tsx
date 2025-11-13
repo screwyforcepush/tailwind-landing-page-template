@@ -104,10 +104,10 @@ export default function FeaturesBlocks() {
 
             <CyberpunkCard
               title="Business AI Maturity Assessment"
-              description="A comprehensive tool that evaluates and scores a company's AI implementation maturity, providing actionable insights for improvement."
+              description="A tool to assess a company's AI maturity. Additionally, a guardrails dashboard for tracking the tool's adherance to the objective."
               icon={faBrain}
               color="red-600"
-              link="https://www.aimme.app/"
+              link="https://www.aimm.me/"
               delay={600}
             />
 
@@ -116,7 +116,7 @@ export default function FeaturesBlocks() {
               description="A platform that enables collaboration between multiple AI personas, each with unique expertise, to solve complex business problems."
               icon={faUsers}
               color="yellow-600"
-              link="https://github.com/screwyforcepush/ai-team-collaboration"
+              link="https://www.loom.com/share/5029d37bfd1743a780adf9c177167045"
               delay={700}
             />
 
