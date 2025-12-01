@@ -83,6 +83,13 @@ export default function Footer() {
     return () => clearInterval(interval)
   }, [])
 
+  const executeOption = (index: number) => {
+    const link = index === 0 
+      ? "https://www.linkedin.com/in/alexsavagedata/" 
+      : "mailto:alex@dataadvisor.io"
+    window.open(link, '_blank')
+  }
+
   // Keyboard navigation
   useEffect(() => {
     if (!bootComplete) return
@@ -94,10 +101,7 @@ export default function Footer() {
       }
       if (e.key === 'Enter') {
         e.preventDefault()
-        const link = selectedOption === 0 
-          ? "https://www.linkedin.com/in/alexsavagedata/" 
-          : "mailto:alex@example.com" // Replace with actual email
-        window.open(link, '_blank')
+        executeOption(selectedOption)
       }
     }
 
@@ -153,7 +157,7 @@ export default function Footer() {
               {/* LinkedIn Option */}
               <div 
                 className={`flex items-center cursor-pointer transition-all duration-200 p-1 ${selectedOption === 0 ? 'text-green-400' : 'text-green-800 opacity-60'}`}
-                onClick={() => setSelectedOption(0)}
+                onClick={() => { setSelectedOption(0); executeOption(0); }}
                 onMouseEnter={() => setSelectedOption(0)}
               >
                 <div className="w-6 mr-2 font-bold">
@@ -166,7 +170,7 @@ export default function Footer() {
               {/* Email Option */}
               <div 
                 className={`flex items-center cursor-pointer transition-all duration-200 p-1 ${selectedOption === 1 ? 'text-green-400' : 'text-green-800 opacity-60'}`}
-                onClick={() => setSelectedOption(1)}
+                onClick={() => { setSelectedOption(1); executeOption(1); }}
                 onMouseEnter={() => setSelectedOption(1)}
               >
                 <div className="w-6 mr-2 font-bold">

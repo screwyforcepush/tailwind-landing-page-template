@@ -31,7 +31,7 @@ export default function FeaturesBlocks() {
   return (
     <section 
       id="portfolio-section" 
-      className={`relative py-20 transition-opacity duration-500 ${showManifest ? 'animate-digital-manifest opacity-100' : 'opacity-0'}`}
+      className={`relative py-10 md:py-20 transition-opacity duration-500 ${showManifest ? 'animate-digital-manifest opacity-100' : 'opacity-0'}`}
     >
       {/* Glitch Entry Overlay */}
       {showManifest && <div className="glitch-overlay"></div>}
@@ -52,20 +52,25 @@ export default function FeaturesBlocks() {
         <div className="py-12 md:py-20">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <div className="inline-block cyberpunk-border p-2">
-              <h2 className="h2 mb-4 text-white font-jetbrains">
+          <div className="max-w-3xl mx-auto text-center pb-6 md:pb-20">
+            <div className="inline-block cyberpunk-border p-1 md:p-2">
+              {/* Mobile Title */}
+              <h2 className="text-xl mb-2 text-white font-jetbrains block md:hidden">
+                <GlitchText text="SHOWCASE" variant="medium" enableHoverEffect={false} />
+              </h2>
+              {/* Desktop Title */}
+              <h2 className="hidden md:block md:text-3xl mb-4 text-white font-jetbrains">
                 <GlitchText text="PORTFOLIO" variant="medium" enableHoverEffect={false} />
               </h2>
             </div>
-            <p className="text-xl text-gray-400 mt-6">
+            <p className="text-xl text-gray-400 mt-6 hidden md:block">
               <span className="text-scan">Product Showcase: </span>
               <span className="text-blue-400"> Learn more about my creations</span>
             </p>
           </div>
 
           {/* Portfolio grid */}
-          <div className="perspective-container max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none stagger-fade-in">
+          <div className="perspective-container max-w-sm mx-auto grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none stagger-fade-in">
             <CyberpunkCard
               title="Crankshaft - AI Sales Engine"
               description="An end to end solution to verify buyer intent and deliver high-quality live-transfer calls. Features real-time voice analysis and automated CRM integration."

@@ -28,6 +28,7 @@ export default function CyberpunkCard({
   extraLinks = []
 }: CyberpunkCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   const [glitching, setGlitching] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -79,7 +80,8 @@ export default function CyberpunkCard({
   return (
     <div
       ref={cardRef}
-      className={`group relative flex flex-col items-center p-6 h-full rounded-lg overflow-hidden transition-all duration-500 ease-out ${visibleClass}`}
+      className={`group relative flex flex-col items-center md:justify-start p-3 md:p-6 h-full rounded-lg overflow-hidden transition-all duration-500 ease-out ${visibleClass} cursor-pointer md:cursor-default`}
+      onClick={() => setIsExpanded(!isExpanded)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
@@ -110,57 +112,70 @@ export default function CyberpunkCard({
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none cyberpunk-grid"></div>
       
-      {/* Icon */}
-      <div 
-        className={`relative w-16 h-16 p-1 -mt-1 mb-4 flex items-center justify-center rounded-full text-white shadow-md transform transition-transform duration-300 ${glitchClass}`}
-        style={{ 
-          background: `linear-gradient(135deg, ${color.replace('600', '700')}, ${color})`,
-          boxShadow: `0 0 ${isHovered ? '15' : '5'}px ${color.replace('600', '400')}`,
-          transform: `translateZ(${isHovered ? 30 : 10}px) scale(${isHovered ? 1.1 : 1})`,
-        }}
-      >
-        <FontAwesomeIcon icon={icon} className="w-8 h-8" />
+      {/* Header Section (Row on Mobile, Col on Desktop) */}
+      <div className="relative z-10 flex flex-row md:flex-col items-center w-full md:w-auto justify-between md:justify-center gap-4 md:gap-0">
+        
+        {/* Icon */}
+        <div 
+          className={`relative flex-shrink-0 w-10 h-10 md:w-16 md:h-16 p-1 flex items-center justify-center rounded-full text-white shadow-md transform transition-transform duration-300 md:mb-4 ${glitchClass}`}
+          style={{ 
+            background: `linear-gradient(135deg, ${color.replace('600', '700')}, ${color})`,
+            boxShadow: `0 0 ${isHovered ? '15' : '5'}px ${color.replace('600', '400')}`,
+            transform: `translateZ(${isHovered ? 30 : 10}px) scale(${isHovered ? 1.1 : 1})`,
+          }}
+        >
+          <FontAwesomeIcon icon={icon} className="w-5 h-5 md:w-8 md:h-8" />
+        </div>
+        
+        {/* Title */}
+        <h4 
+          className={`flex-grow text-left md:text-center text-sm md:text-xl font-bold leading-snug tracking-tight text-white transition-all duration-300 md:mb-2 ${glitchClass}`}
+          style={{ 
+            transform: `translateZ(${isHovered ? 50 : 20}px)`,
+            textShadow: `0 0 5px ${color.replace('600', '400')}, 0 0 ${isHovered ? 10 : 0}px ${color.replace('600', '300')}` 
+          }}
+        >
+          {title}
+        </h4>
+
+        {/* Mobile Expand Indicator */}
+        <div className="md:hidden text-gray-400 text-xs transition-transform duration-300" style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+           ▼
+        </div>
+
       </div>
       
-      {/* Title */}
-      <h4 
-        className={`relative text-xl font-bold leading-snug tracking-tight mb-2 text-center text-white transition-all duration-300 ${glitchClass}`}
-        style={{ 
-          transform: `translateZ(${isHovered ? 50 : 20}px)`,
-          textShadow: `0 0 5px ${color.replace('600', '400')}, 0 0 ${isHovered ? 10 : 0}px ${color.replace('600', '300')}` 
-        }}
-      >
-        {title}
-      </h4>
-      
-      {/* Description */}
-      <p 
-        className="relative text-gray-400 text-center mb-4 z-10"
-        style={{ transform: `translateZ(${isHovered ? 40 : 15}px)` }}
-      >
-        {description}
-      </p>
-
-      {extraLinks.length > 0 && (
-        <div 
-          className="relative mt-auto flex flex-wrap justify-center gap-2 z-10"
-          style={{ transform: `translateZ(${isHovered ? 45 : 20}px)` }}
+      {/* Mobile Expandable Content / Desktop Always Visible */}
+      <div className={`w-full transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100 md:mt-0'}`}>
+        {/* Description */}
+        <p 
+          className="relative text-sm md:text-base text-gray-400 text-left md:text-center mb-4 z-10"
+          style={{ transform: `translateZ(${isHovered ? 40 : 15}px)` }}
         >
-          {extraLinks.map(({ href, label, icon: linkIcon }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(event) => event.stopPropagation()}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700 text-sm text-gray-300 hover:text-white hover:border-white transition-colors"
-            >
-              {linkIcon && <FontAwesomeIcon icon={linkIcon} className="w-3.5 h-3.5" />}
-              {label}
-            </a>
-          ))}
-        </div>
-      )}
+          {description}
+        </p>
+
+        {extraLinks.length > 0 && (
+          <div 
+            className="relative flex flex-wrap justify-start md:justify-center gap-2 z-10 pb-1"
+            style={{ transform: `translateZ(${isHovered ? 45 : 20}px)` }}
+          >
+            {extraLinks.map(({ href, label, icon: linkIcon }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(event) => event.stopPropagation()}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700 text-sm text-gray-300 hover:text-white hover:border-white transition-colors"
+              >
+                {linkIcon && <FontAwesomeIcon icon={linkIcon} className="w-3.5 h-3.5" />}
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
       
     </div>
   )
