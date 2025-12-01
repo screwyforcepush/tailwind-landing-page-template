@@ -30,8 +30,17 @@ export default function ScrollGlitchEffect() {
           setTrigger(false)
           document.body.style.overflow = ''
           
-          // Scroll to bottom
-          window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' })
+          // Force instant scroll by overriding any CSS smooth scroll
+          const originalScrollBehavior = document.documentElement.style.scrollBehavior
+          document.documentElement.style.scrollBehavior = 'auto'
+          
+          // Scroll to bottom instantly
+          window.scrollTo(0, document.documentElement.scrollHeight)
+          
+          // Revert scroll behavior after a microtask
+          requestAnimationFrame(() => {
+            document.documentElement.style.scrollBehavior = originalScrollBehavior
+          })
         }, 800) 
       }
     }

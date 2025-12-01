@@ -10,18 +10,67 @@ import ThreeJSLoader from './utils/three-js-loader'
 export default function Hero() {
   const [scrolled, setScrolled] = useState(false)
   const [animationComplete, setAnimationComplete] = useState(false)
+  const [melt, setMelt] = useState(false)
+  const [hasTriggered, setHasTriggered] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      const currentScroll = window.scrollY
+      setScrolled(currentScroll > 50)
+      
+      // Reset trigger if we are back at the very top
+      if (currentScroll === 0) {
+        setHasTriggered(false)
+        setMelt(false)
+      }
+
+      // Trigger melt effect when scrolling down past 50px, if not already triggered
+      if (currentScroll > 50 && !hasTriggered && !melt) {
+        setMelt(true)
+        setHasTriggered(true)
+        
+        // Lock scroll during animation
+        document.body.style.overflow = 'hidden'
+        
+        // Wait for animation to finish, then jump
+        setTimeout(() => {
+          // Find the portfolio section
+          const nextSection = document.getElementById('portfolio-section')
+          if (nextSection) {
+            // Force instant scroll
+            const originalScrollBehavior = document.documentElement.style.scrollBehavior
+            document.documentElement.style.scrollBehavior = 'auto'
+            
+            // nextSection.scrollIntoView({ behavior: 'auto' }) OR:
+            const sectionTop = nextSection.getBoundingClientRect().top + window.scrollY
+            window.scrollTo(0, sectionTop)
+
+            requestAnimationFrame(() => {
+              document.documentElement.style.scrollBehavior = originalScrollBehavior
+              document.body.style.overflow = ''
+              // We keep 'melt' true so the Hero stays hidden/melted while we are below it?
+              // The user said "reappears when scrolling back to the top".
+              // If we reset melt(false) now, the Hero will reappear instantly behind us.
+              // Since we jumped past it, that's fine.
+              setMelt(false)
+            })
+          } else {
+              // Fallback if section not found
+              document.body.style.overflow = ''
+              setMelt(false)
+          }
+        }, 800) // Match animation duration
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [hasTriggered, melt])
 
   return (
-    <section className="relative h-screen flex items-center justify-center">
+    <section 
+      className={`relative h-screen flex items-center justify-center transition-all duration-500 ${melt ? 'animate-melt-out pointer-events-none' : 'opacity-100'}`}
+    >
       {/* 3D Animation Background */}
       <ThreeJSLoader containerId="hero-animation" />
       

@@ -8,12 +8,15 @@ import GlitchText from './utils/glitch-text'
 
 export default function FeaturesBlocks() {
   const [isVisible, setIsVisible] = useState(false)
+  const [showManifest, setShowManifest] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          // Delay slighty to sync with the hero melt end
+          setTimeout(() => setShowManifest(true), 100)
           observer.disconnect()
         }
       })
@@ -26,7 +29,13 @@ export default function FeaturesBlocks() {
   }, [])
 
   return (
-    <section id="portfolio-section" className="relative py-20">
+    <section 
+      id="portfolio-section" 
+      className={`relative py-20 transition-opacity duration-500 ${showManifest ? 'animate-digital-manifest opacity-100' : 'opacity-0'}`}
+    >
+      {/* Glitch Entry Overlay */}
+      {showManifest && <div className="glitch-overlay"></div>}
+
       {/* Background effects */}
       <div className="absolute inset-0 bg-gray-900 bg-opacity-80 pointer-events-none overflow-hidden z-0">
         <div className="data-flow-bg absolute inset-0"></div>
@@ -92,7 +101,7 @@ export default function FeaturesBlocks() {
 
             <CyberpunkCard
               title="Agentic Coding Observability Harness"
-              description="Agentic Coding Harness for orchestrating teams of collaborative Claude Code + Codex agents. Package includes an observability platform."
+              description="Agentic Coding Harness for orchestrating teams of collaborative Claude Code + Codex + Gemini agents. Package includes an observability platform."
               icon={faBriefcase}
               color="purple-600"
               extraLinks={[

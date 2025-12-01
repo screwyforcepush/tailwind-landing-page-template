@@ -8,6 +8,7 @@
 @import 'additional-styles/theme.css';
 @import 'additional-styles/animations.css';
 @import 'additional-styles/glitch-transition.css';
+@import 'additional-styles/digital-manifest.css';
 
 @import 'tailwindcss/utilities';
 
