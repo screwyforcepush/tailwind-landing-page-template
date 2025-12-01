@@ -1,149 +1,193 @@
-import Logo from './logo'
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faTerminal, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+interface BootLog {
+  text: string;
+  timestamp: string;
+}
 
 export default function Footer() {
-  return (null
-    // <footer>
-    //   <div className="max-w-6xl mx-auto px-4 sm:px-6">
+  const [bootSequence, setBootSequence] = useState<BootLog[]>([])
+  const [bootComplete, setBootComplete] = useState(false)
+  const [selectedOption, setSelectedOption] = useState(0) // 0: LinkedIn, 1: Email
+  const [cursorVisible, setCursorVisible] = useState(true)
+  const footerRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
-    //     {/* Top area: Blocks */}
-    //     <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-gray-200">
+  const bootLogs = [
+    "Terminating ornamental animations... DONE",
+    "Booting bare-metal command shell...",
+    "Restoring profile: ALEX_SAVAGE.vcfg ... OK",
+    "Routing traffic to secure comms node...",
+    "Integrity check: PASS (0 anomalies)",
+    "Opening outbound ports: LINKEDIN, EMAIL",
+    "Handshake routines armed.",
+    "Standing by for connection request."
+  ]
 
-    //       {/* 1st block */}
-    //       <div className="sm:col-span-12 lg:col-span-3">
-    //         <div className="mb-2">
-    //           <Logo />
-    //         </div>
-    //         <div className="text-sm text-gray-600">
-    //           <a href="#0" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Terms</a> · <a href="#0" className="text-gray-600 hover:text-gray-900 hover:underline transition duration-150 ease-in-out">Privacy Policy</a>
-    //         </div>
-    //       </div>
+  // Handle Intersection Observer to start boot sequence
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      })
+    }, { threshold: 0.5 })
 
-    //       {/* 2nd block */}
-    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-    //         <h6 className="text-gray-800 font-medium mb-2">Products</h6>
-    //         <ul className="text-sm">
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Web Studio</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">DynamicBox Flex</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Programming Forms</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Integrations</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Command-line</a>
-    //           </li>
-    //         </ul>
-    //       </div>
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
 
-    //       {/* 3rd block */}
-    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-    //         <h6 className="text-gray-800 font-medium mb-2">Resources</h6>
-    //         <ul className="text-sm">
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Documentation</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Tutorials & Guides</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Blog</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Support Center</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Partners</a>
-    //           </li>
-    //         </ul>
-    //       </div>
+    return () => observer.disconnect()
+  }, [])
 
-    //       {/* 4th block */}
-    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-    //         <h6 className="text-gray-800 font-medium mb-2">Company</h6>
-    //         <ul className="text-sm">
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Home</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">About us</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Company values</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
-    //           </li>
-    //           <li className="mb-2">
-    //             <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Privacy Policy</a>
-    //           </li>
-    //         </ul>
-    //       </div>
+  // Boot sequence animation
+  useEffect(() => {
+    if (!isVisible) return
 
-    //       {/* 5th block */}
-    //       <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-    //         <h6 className="text-gray-800 font-medium mb-2">Subscribe</h6>
-    //         <p className="text-sm text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
-    //         <form>
-    //           <div className="flex flex-wrap mb-4">
-    //             <div className="w-full">
-    //               <label className="block text-sm sr-only" htmlFor="newsletter">Email</label>
-    //               <div className="relative flex items-center max-w-xs">
-    //                 <input id="newsletter" type="email" className="form-input w-full text-gray-800 px-3 py-2 pr-12 text-sm" placeholder="Your email" required />
-    //                 <button type="submit" className="absolute inset-0 left-auto" aria-label="Subscribe">
-    //                   <span className="absolute inset-0 right-auto w-px -ml-px my-2 bg-gray-300" aria-hidden="true"></span>
-    //                   <svg className="w-3 h-3 fill-current text-blue-600 mx-3 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-    //                     <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />
-    //                   </svg>
-    //                 </button>
-    //               </div>
-    //               {/* Success message */}
-    //               {/* <p className="mt-2 text-green-600 text-sm">Thanks for subscribing!</p> */}
-    //             </div>
-    //           </div>
-    //         </form>
-    //       </div>
+    let currentIndex = 0
+    
+    // Clear any existing sequence when becoming visible to restart fresh
+    setBootSequence([])
 
-    //     </div>
+    const interval = setInterval(() => {
+      if (currentIndex < bootLogs.length) {
+        const now = new Date()
+        const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`
+        
+        setBootSequence(prev => {
+          // Prevent duplicate lines if the interval fires too quickly
+          if (prev.length >= bootLogs.length) return prev;
+          return [...prev, { text: bootLogs[currentIndex], timestamp: timeString }]
+        })
+        currentIndex++
+      } else {
+        clearInterval(interval)
+        setTimeout(() => setBootComplete(true), 500)
+      }
+    }, 400)
 
-    //     {/* Bottom area */}
-    //     <div className="md:flex md:items-center md:justify-between py-4 md:py-8 border-t border-gray-200">
+    return () => clearInterval(interval)
+  }, [isVisible])
 
-    //       {/* Social as */}
-    //       <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
-    //         <li>
-    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Twitter">
-    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    //               <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
-    //             </svg>
-    //           </a>
-    //         </li>
-    //         <li className="ml-4">
-    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Github">
-    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    //               <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
-    //             </svg>
-    //           </a>
-    //         </li>
-    //         <li className="ml-4">
-    //           <a href="#0" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="LinkedIn">
-    //             <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    //               <path d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
-    //             </svg>
-    //           </a>
-    //         </li>
-    //       </ul>
+  // Cursor blinking effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCursorVisible(v => !v)
+    }, 500)
+    return () => clearInterval(interval)
+  }, [])
 
-    //       {/* Copyrights note */}
-    //       <div className="text-sm text-gray-600 mr-4">&copy; Cruip.com. All rights reserved.</div>
+  // Keyboard navigation
+  useEffect(() => {
+    if (!bootComplete) return
 
-    //     </div>
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        setSelectedOption(prev => (prev === 0 ? 1 : 0))
+      }
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        const link = selectedOption === 0 
+          ? "https://www.linkedin.com/in/alexsavagedata/" 
+          : "mailto:alex@example.com" // Replace with actual email
+        window.open(link, '_blank')
+      }
+    }
 
-    //   </div>
-    // </footer>
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [bootComplete, selectedOption])
+
+  return (
+    <footer ref={footerRef} className="relative h-screen w-full bg-black font-mono text-green-500 p-4 md:p-8 flex flex-col overflow-hidden">
+      {/* Scanlines background */}
+      <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] pointer-events-none opacity-30"></div>
+      
+      {/* CRT Flicker - Static, no pulse */}
+      <div className="absolute inset-0 bg-white opacity-[0.02] pointer-events-none"></div>
+
+      {/* Terminal Content */}
+      <div className="relative z-10 w-full h-full flex flex-col justify-start items-start">
+        
+        {/* Header */}
+        <div className="w-full border-b border-green-800 pb-2 mb-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <FontAwesomeIcon icon={faTerminal} className="mr-3" />
+            <span className="text-sm md:text-base tracking-widest">ROOT_ACCESS_TERMINAL</span>
+          </div>
+          <div className="text-xs">ONLINE</div>
+        </div>
+
+        {/* Boot Logs */}
+        <div className="w-full space-y-1 mb-8 font-mono text-sm md:text-base">
+          {bootSequence.map((log, index) => (
+            <div key={index} className="opacity-80">
+              {/* Show timestamp for all lines except the last one in the predefined log list */}
+              {index < bootLogs.length - 1 ? (
+                <span className="text-green-700 mr-3">[{log.timestamp}]</span>
+              ) : null}
+              {log.text}
+            </div>
+          ))}
+          {!bootComplete && (
+            <div className="inline-block w-3 h-5 bg-green-500 ml-1 animate-pulse"></div>
+          )}
+        </div>
+
+        {/* Interactive Prompt */}
+        {bootComplete && (
+          <div className="animate-fadeIn w-full">
+            <h3 className="text-xl md:text-2xl mb-6 font-bold glitch" data-text="INITIATE CONNECTION?">
+              INITIATE CONNECTION?
+            </h3>
+
+            <div className="space-y-2 text-base md:text-lg">
+              
+              {/* LinkedIn Option */}
+              <div 
+                className={`flex items-center cursor-pointer transition-all duration-200 p-1 ${selectedOption === 0 ? 'text-green-400' : 'text-green-800 opacity-60'}`}
+                onClick={() => setSelectedOption(0)}
+                onMouseEnter={() => setSelectedOption(0)}
+              >
+                <div className="w-6 mr-2 font-bold">
+                  {selectedOption === 0 ? '>' : ''}
+                </div>
+                <FontAwesomeIcon icon={faLinkedin} className="mr-3" />
+                <span className={selectedOption === 0 ? 'underline decoration-2 underline-offset-4' : ''}>LINKEDIN_PROTOCOL</span>
+              </div>
+
+              {/* Email Option */}
+              <div 
+                className={`flex items-center cursor-pointer transition-all duration-200 p-1 ${selectedOption === 1 ? 'text-green-400' : 'text-green-800 opacity-60'}`}
+                onClick={() => setSelectedOption(1)}
+                onMouseEnter={() => setSelectedOption(1)}
+              >
+                <div className="w-6 mr-2 font-bold">
+                  {selectedOption === 1 ? '>' : ''}
+                </div>
+                <FontAwesomeIcon icon={faEnvelope} className="mr-3" />
+                <span className={selectedOption === 1 ? 'underline decoration-2 underline-offset-4' : ''}>EMAIL_UPLINK</span>
+              </div>
+
+            </div>
+
+            <div className="mt-6 text-lg flex items-center">
+              <span className="text-green-500 mr-2">user@root:~$</span>
+              <span className="text-green-300">
+                {selectedOption === 0 ? 'exec ./connect_linkedin.sh' : 'exec ./send_email.sh'}
+              </span>
+              <span className={`ml-2 w-2 h-5 bg-green-500 ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}></span>
+            </div>
+          </div>
+        )}
+      </div>
+    </footer>
   )
 }

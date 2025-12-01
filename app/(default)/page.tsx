@@ -6,16 +6,18 @@ export const metadata = {
 import Hero from '@/components/hero'
 import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
-import Newsletter from '@/components/newsletter'
+import ScrollGlitchEffect from '@/components/utils/scroll-glitch-effect'
+import Footer from '@/components/ui/footer'
 
 export default function Home() {
   return (
     <>
+      <ScrollGlitchEffect />
       <Hero />
       {/* <Features /> */}
       <FeaturesBlocks />
       <Testimonials />
-      <Newsletter />
+      <Footer />
     </>
   )
 }

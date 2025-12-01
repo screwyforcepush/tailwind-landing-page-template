@@ -10,20 +10,34 @@ import MobileMenu from './mobile-menu'
 
 export default function Header() {
   const [top, setTop] = useState<boolean>(true)
+  const [hide, setHide] = useState<boolean>(false)
 
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
-    window.pageYOffset > 10 ? setTop(false) : setTop(true)
+    const scrollY = window.pageYOffset
+    const windowHeight = window.innerHeight
+    const documentHeight = document.documentElement.scrollHeight
+    
+    scrollY > 10 ? setTop(false) : setTop(true)
+    
+    // Hide header when near bottom (approaching footer)
+    if (documentHeight - (scrollY + windowHeight) < windowHeight / 2) {
+      setHide(true)
+    } else {
+      setHide(false)
+    }
   }  
 
   useEffect(() => {
     scrollHandler()
     window.addEventListener('scroll', scrollHandler)
     return () => window.removeEventListener('scroll', scrollHandler)
-  }, [top])
+  }, [top, hide])
 
   return (
-    <header className={`fixed w-full z-30 transition-all duration-300 ease-in-out ${!top ? 'glass-effect backdrop-blur-md shadow-lg' : ''}`}>
+    <header 
+      className={`fixed w-full z-30 transition-all duration-500 ease-in-out ${!top ? 'glass-effect backdrop-blur-md shadow-lg' : ''} ${hide ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}
+    >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
 
