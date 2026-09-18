@@ -223,7 +223,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   safelist: [
     // Ensure these dynamic classes are not purged
     {

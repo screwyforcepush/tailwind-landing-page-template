@@ -5,7 +5,7 @@ import { Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPenNib } from '@fortawesome/free-solid-svg-icons'
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -88,8 +88,20 @@ export default function MobileMenu() {
             
             <ul className="stagger-fade-in space-y-6">
               <li>
-                <a 
-                  href="mailto:alex@dataadvisor.io" 
+                <Link
+                  href="/blog"
+                  className="text-white hover:text-cyan-400 transition-colors flex items-center py-2 px-4 glass-effect rounded-md border border-cyan-900/40"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-cyan-500/20 mr-3">
+                    <FontAwesomeIcon icon={faPenNib} className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <span className="text-lg">Blog</span>
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:alex@dataadvisor.io"
                   className="text-white hover:text-blue-400 transition-colors flex items-center py-2 px-4 glass-effect rounded-md border border-blue-900/40"
                   onClick={() => setMobileNavOpen(false)}
                 >

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link'
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
 
@@ -48,6 +49,14 @@ export default function Header() {
           <nav className="hidden md:flex md:grow">
             {/* Social links with neon effect */}
             <ul className="flex grow justify-end flex-wrap items-center">
+              <div className="mr-6">
+                <Link
+                  href="/blog"
+                  className="font-jetbrains text-sm tracking-wider text-gray-300 hover:text-cyan-300 transition-colors duration-300"
+                >
+                  / BLOG
+                </Link>
+              </div>
               <div className="mr-3">
                 <a 
                   className="btn text-white bg-gray-900 hover:bg-blue-900 transition-all duration-300 ease-in-out w-10 h-10 mb-4 sm:w-auto sm:mb-0 flex items-center justify-center neon-box"
