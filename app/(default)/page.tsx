@@ -14,7 +14,6 @@ export default function Home() {
     <>
       <ScrollGlitchEffect />
       <Hero />
-      {/* <Features /> */}
       <FeaturesBlocks />
       <Testimonials />
       <Footer />

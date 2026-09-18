@@ -1,10 +1,8 @@
 import './css/style.css'
 
 import { JetBrains_Mono, Inter } from 'next/font/google'
-import Script from 'next/script'
 
 import Header from '@/components/ui/header'
-import Banner from '@/components/banner'
 import { Analytics } from '@vercel/analytics/react'
 import ParticleBackground from '@/components/utils/particle-background'
 
@@ -44,7 +42,6 @@ export default function RootLayout({
           <Header />
           {children}
           <Analytics />
-          <Banner />
         </div>
         
       </body>
