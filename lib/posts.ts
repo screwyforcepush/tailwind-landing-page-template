@@ -20,27 +20,29 @@ export interface PostPart {
   markdown: string
 }
 
-export type PostRoute = 'both' | 'head' | 'tail'
-export const POST_PARTS: Exclude<PostRoute, 'both'>[] = ['head', 'tail']
+/** Which half of a post a route serves. */
+export type PostRoute = 'both' | 'spec' | 'narrative'
+export type PostPartKey = Exclude<PostRoute, 'both'>
+export const POST_PARTS: PostPartKey[] = ['spec', 'narrative']
 
 export interface Post extends PostMeta {
   /** Rendered HTML body */
   html: string
   /** Raw file contents, frontmatter included */
   markdown: string
-  /** Head: the part written for models. Whole body when the post has no tail. */
-  head: PostPart
-  /** Tail: the part written for people. Null when the post has no tail. */
-  tail: PostPart | null
+  /** Spec: the part written for models. Whole body when the post has no narrative. */
+  spec: PostPart
+  /** Narrative: the part written for humans. Null when the post has no narrative. */
+  narrative: PostPart | null
 }
 
-const TAIL_HEADING = /^## For people\s*$/m
+const NARRATIVE_HEADING = /^## Narrative\s*$/m
 
-/** Split a post body into head and tail on the "## For people" heading. */
-export function splitBody(content: string): { head: string; tail: string | null } {
-  const m = TAIL_HEADING.exec(content)
-  if (!m) return { head: content.trim(), tail: null }
-  return { head: content.slice(0, m.index).trim(), tail: content.slice(m.index).trim() }
+/** Split a post body into spec and narrative on the "## Narrative" heading. */
+export function splitBody(content: string): { spec: string; narrative: string | null } {
+  const m = NARRATIVE_HEADING.exec(content)
+  if (!m) return { spec: content.trim(), narrative: null }
+  return { spec: content.slice(0, m.index).trim(), narrative: content.slice(m.index).trim() }
 }
 
 function readPostFile(slug: string): { raw: string; data: Record<string, any>; content: string } {
@@ -74,15 +76,22 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
 }
 
+function render(markdown: string): PostPart {
+  return { markdown, html: marked.parse(markdown, { async: false }) as string }
+}
+
 export function getPostBySlug(slug: string): Post | null {
   if (!getPostSlugs().includes(slug)) return null
   const { raw, data, content } = readPostFile(slug)
   const html = marked.parse(content, { async: false }) as string
   const parts = splitBody(content)
-  const head: PostPart = { markdown: parts.head, html: marked.parse(parts.head, { async: false }) as string }
-  const tail: PostPart | null =
-    parts.tail === null ? null : { markdown: parts.tail, html: marked.parse(parts.tail, { async: false }) as string }
-  return { ...toMeta(slug, data), html, markdown: raw, head, tail }
+  return {
+    ...toMeta(slug, data),
+    html,
+    markdown: raw,
+    spec: render(parts.spec),
+    narrative: parts.narrative === null ? null : render(parts.narrative),
+  }
 }
 
 export function formatDate(date: string): string {

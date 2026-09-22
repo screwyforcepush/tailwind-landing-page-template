@@ -96,7 +96,7 @@ export default function MobileMenu() {
                   <div className="w-10 h-10 rounded-full flex items-center justify-center bg-cyan-500/20 mr-3">
                     <FontAwesomeIcon icon={faPenNib} className="w-5 h-5 text-cyan-400" />
                   </div>
-                  <span className="text-lg">Blog</span>
+                  <span className="text-lg">Not for humans</span>
                 </Link>
               </li>
               <li>

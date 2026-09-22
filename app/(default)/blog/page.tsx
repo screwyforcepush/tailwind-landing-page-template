@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { getAllPosts, formatDate } from '@/lib/posts'
 
 export const metadata = {
-  title: 'Blog - Alex Savage',
-  description: 'Notes on AI product engineering, agent workflows, and whatever is on the bench.',
+  title: 'Not for humans - Alex Savage',
+  description: 'Posts written for models first. Each one has a spec for AI and a narrative for humans.',
 }
 
 export default function BlogIndex() {
@@ -16,7 +16,10 @@ export default function BlogIndex() {
 
           <div className="mb-10 md:mb-14">
             <div className="font-jetbrains text-sm text-blue-400 mb-2">/ BLOG</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white font-jetbrains">Posts</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-white font-jetbrains">Not for humans</h1>
+            <p className="mt-3 text-gray-400">
+              Every post is a spec for AI and a narrative for humans. Hand a model the spec route. Read or listen to the narrative.
+            </p>
           </div>
 
           {posts.length === 0 ? (

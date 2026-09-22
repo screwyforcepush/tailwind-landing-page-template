@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { getAllPosts, getPostBySlug, POST_PARTS, type PostRoute } from '@/lib/posts'
+import { getAllPosts, getPostBySlug, POST_PARTS, type PostPartKey } from '@/lib/posts'
 import PostView from '@/components/blog/post-view'
 
 interface Params {
@@ -14,12 +14,12 @@ export function generateStaticParams() {
   )
 }
 
-const LABEL: Record<Exclude<PostRoute, 'both'>, string> = {
-  head: 'for models',
-  tail: 'for people',
+const LABEL: Record<PostPartKey, string> = {
+  spec: 'for AI',
+  narrative: 'for humans',
 }
 
-function isPart(p: string): p is Exclude<PostRoute, 'both'> {
+function isPart(p: string): p is PostPartKey {
   return (POST_PARTS as string[]).includes(p)
 }
 
@@ -36,6 +36,6 @@ export default function BlogPostPart({ params }: Params) {
   if (!isPart(params.part)) notFound()
   const post = getPostBySlug(params.slug)
   if (!post) notFound()
-  if (params.part === 'tail' && post.tail === null) notFound()
+  if (params.part === 'narrative' && post.narrative === null) notFound()
   return <PostView post={post} route={params.part} />
 }

@@ -9,19 +9,19 @@ interface PostViewProps {
 
 const ROUTES: { key: PostRoute; label: string; path: (slug: string) => string }[] = [
   { key: 'both', label: 'BOTH', path: (slug) => `/blog/${slug}` },
-  { key: 'head', label: 'HEAD · FOR MODELS', path: (slug) => `/blog/${slug}/head` },
-  { key: 'tail', label: 'TAIL · FOR PEOPLE', path: (slug) => `/blog/${slug}/tail` },
+  { key: 'spec', label: 'SPEC · FOR AI', path: (slug) => `/blog/${slug}/spec` },
+  { key: 'narrative', label: 'NARRATIVE · FOR HUMANS', path: (slug) => `/blog/${slug}/narrative` },
 ]
 
 export function partFor(post: Post, route: PostRoute): { html: string; markdown: string } {
-  if (route === 'head') return post.head
-  if (route === 'tail' && post.tail) return post.tail
+  if (route === 'spec') return post.spec
+  if (route === 'narrative' && post.narrative) return post.narrative
   return { html: post.html, markdown: post.markdown }
 }
 
 export default function PostView({ post, route }: PostViewProps) {
   const part = partFor(post, route)
-  const hasTail = post.tail !== null
+  const hasNarrative = post.narrative !== null
 
   return (
     <section className="relative">
@@ -29,7 +29,7 @@ export default function PostView({ post, route }: PostViewProps) {
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
           <Link href="/blog" className="font-jetbrains text-sm text-blue-400 hover:text-blue-300 transition-colors">
-            &larr; / BLOG
+            &larr; / NOT FOR HUMANS
           </Link>
 
           <header className="mt-6 mb-10">
@@ -37,7 +37,7 @@ export default function PostView({ post, route }: PostViewProps) {
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">{post.title}</h1>
 
             <div className="flex flex-wrap items-center gap-2">
-              {hasTail && (
+              {hasNarrative && (
                 <nav aria-label="Post route" className="inline-flex border border-blue-900/40">
                   {ROUTES.map((r) => {
                     const active = r.key === route

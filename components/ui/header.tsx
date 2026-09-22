@@ -54,7 +54,7 @@ export default function Header() {
                   href="/blog"
                   className="font-jetbrains text-sm tracking-wider text-gray-300 hover:text-cyan-300 transition-colors duration-300"
                 >
-                  / BLOG
+                  / NOT FOR HUMANS
                 </Link>
               </div>
               <div className="mr-3">
