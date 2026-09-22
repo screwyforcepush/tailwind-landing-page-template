@@ -12,11 +12,35 @@ export interface PostMeta {
   description: string
 }
 
+/** One half of a two-part post. */
+export interface PostPart {
+  /** Rendered HTML */
+  html: string
+  /** Markdown for this part only, no frontmatter */
+  markdown: string
+}
+
+export type PostRoute = 'both' | 'head' | 'tail'
+export const POST_PARTS: Exclude<PostRoute, 'both'>[] = ['head', 'tail']
+
 export interface Post extends PostMeta {
   /** Rendered HTML body */
   html: string
   /** Raw file contents, frontmatter included */
   markdown: string
+  /** Head: the part written for models. Whole body when the post has no tail. */
+  head: PostPart
+  /** Tail: the part written for people. Null when the post has no tail. */
+  tail: PostPart | null
+}
+
+const TAIL_HEADING = /^## For people\s*$/m
+
+/** Split a post body into head and tail on the "## For people" heading. */
+export function splitBody(content: string): { head: string; tail: string | null } {
+  const m = TAIL_HEADING.exec(content)
+  if (!m) return { head: content.trim(), tail: null }
+  return { head: content.slice(0, m.index).trim(), tail: content.slice(m.index).trim() }
 }
 
 function readPostFile(slug: string): { raw: string; data: Record<string, any>; content: string } {
@@ -54,7 +78,11 @@ export function getPostBySlug(slug: string): Post | null {
   if (!getPostSlugs().includes(slug)) return null
   const { raw, data, content } = readPostFile(slug)
   const html = marked.parse(content, { async: false }) as string
-  return { ...toMeta(slug, data), html, markdown: raw }
+  const parts = splitBody(content)
+  const head: PostPart = { markdown: parts.head, html: marked.parse(parts.head, { async: false }) as string }
+  const tail: PostPart | null =
+    parts.tail === null ? null : { markdown: parts.tail, html: marked.parse(parts.tail, { async: false }) as string }
+  return { ...toMeta(slug, data), html, markdown: raw, head, tail }
 }
 
 export function formatDate(date: string): string {
